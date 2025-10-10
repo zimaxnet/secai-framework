@@ -19,8 +19,8 @@ author:
 # For GitHub Pages, use remote theme:
 remote_theme: just-the-docs/just-the-docs@v0.8.2
 
-# Color scheme
-color_scheme: cursor-research
+# Color scheme (using default light theme)
+color_scheme: light
 
 # Logo and branding
 logo: "/assets/images/logo.png"
