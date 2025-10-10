@@ -16,8 +16,7 @@ author:
 
 # Theme configuration
 # Using just-the-docs theme for technical documentation
-theme: just-the-docs
-# For GitHub Pages, use remote theme instead:
+# For GitHub Pages, use remote theme:
 remote_theme: just-the-docs/just-the-docs@v0.8.2
 
 # Color scheme
