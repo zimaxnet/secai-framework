@@ -1,0 +1,79 @@
+{
+  "name": "Enterprise Secure AI Development Container",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/powershell:1": {},
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-bicep",
+        "ms-azuretools.vscode-azureterraform",
+        "ms-vscode.powershell",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "GitHub.vscode-pull-request-github",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "// Cursor IDE Privacy Settings": "Configure if using Cursor",
+        "cursor.privacyMode": true,
+        "cursor.telemetry": false,
+        
+        "// GitHub Copilot Enterprise Settings": "Configure for Copilot Business/Enterprise",
+        "github.copilot.enable": {
+          "*": true,
+          "yaml": true,
+          "json": true,
+          "markdown": true
+        },
+        "github.copilot.advanced": {
+          "// Content Exclusions": "Prevent secrets from being sent to Copilot",
+          "// Note: Configure org-level settings in GitHub for enforcement": "",
+          "length": 500,
+          "temperature": 0.2,
+          "top_p": 1,
+          "stop": []
+        },
+        
+        "// Security-focused editor settings": "",
+        "files.exclude": {
+          "**/*.env": true,
+          "**/.env.*": true,
+          "**/secrets": true,
+          "**/*.key": true,
+          "**/*.pem": true
+        },
+        "files.watcherExclude": {
+          "**/secrets/**": true,
+          "**/*.key": true
+        },
+        "search.exclude": {
+          "**/secrets/**": true
+        },
+        
+        "// Git security settings": "",
+        "git.branchProtection": ["main", "master", "production"],
+        "git.confirmSync": true,
+        "git.detectSubmodules": true
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "az bicep install && pwsh -c 'Install-Module -Name Pester -Force' && echo '✓ Development container initialized' && echo '✓ Azure CLI installed' && echo '✓ Bicep installed' && echo '✓ GitHub CLI installed' && echo 'ℹ️  Configure Cursor Privacy Mode if using Cursor IDE' && echo 'ℹ️  Access Copilot Spaces via GitHub CLI or web'",
+  "runArgs": ["--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  },
+  "// Security Notes": {
+    "secrets": "Never store secrets in this devcontainer.json",
+    "copilot_spaces": "Configure content exclusions at organization level",
+    "extensions": "Only install approved extensions from allowlist",
+    "audit": "All devcontainer usage logged via GitHub Codespaces audit log"
+  }
+}

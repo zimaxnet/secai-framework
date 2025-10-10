@@ -1,0 +1,251 @@
+// Custom branding styles for Cursor Security Research Wiki
+
+// Color scheme: cursor-research
+$body-background-color: #ffffff !default;
+$sidebar-color: #f5f6fa !default;
+$search-background-color: #ffffff !default;
+$table-background-color: #ffffff !default;
+$code-background-color: #f5f6fa !default;
+
+// Brand colors (customize these for your corporation)
+$brand-primary: #0066cc;
+$brand-secondary: #00a6ed;
+$brand-accent: #7c3aed;
+$brand-warning: #f59e0b;
+$brand-danger: #dc2626;
+$brand-success: #10b981;
+
+// Link colors
+$link-color: $brand-primary;
+$link-color-hover: $brand-secondary;
+$link-color-visited: $brand-accent;
+
+// Code blocks
+$code-background-color: #1e1e1e;
+$code-linenumber-color: #858585;
+
+// Callout boxes
+.callout {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  border-radius: 0.25rem;
+  background-color: #f5f6fa;
+
+  &.callout-warning {
+    border-color: $brand-warning;
+    background-color: #fef3c7;
+  }
+
+  &.callout-note {
+    border-color: $brand-primary;
+    background-color: #dbeafe;
+  }
+
+  &.callout-important {
+    border-color: $brand-danger;
+    background-color: #fee2e2;
+  }
+
+  &.callout-tip {
+    border-color: $brand-success;
+    background-color: #d1fae5;
+  }
+
+  &.callout-security {
+    border-color: $brand-accent;
+    background-color: #ede9fe;
+  }
+}
+
+// Custom header styling
+.site-header {
+  border-bottom: 2px solid $brand-primary;
+}
+
+.site-title {
+  font-weight: 700;
+  color: $brand-primary !important;
+  font-size: 1.5rem;
+
+  &:hover {
+    color: $brand-secondary !important;
+  }
+}
+
+// Navigation styling
+.nav-list .nav-list-item .nav-list-link {
+  &:hover {
+    background-color: rgba($brand-primary, 0.1);
+  }
+
+  &.active {
+    background-color: rgba($brand-primary, 0.15);
+    font-weight: 600;
+  }
+}
+
+// Search styling
+.search-input {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.375rem;
+
+  &:focus {
+    border-color: $brand-primary;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($brand-primary, 0.1);
+  }
+}
+
+// Button styling
+.btn {
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &.btn-primary {
+    background-color: $brand-primary;
+    color: white;
+
+    &:hover {
+      background-color: $brand-secondary;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Table styling
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+
+  th {
+    background-color: $brand-primary;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  tr:hover {
+    background-color: rgba($brand-primary, 0.05);
+  }
+}
+
+// Code block enhancements
+pre.highlight {
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+// Inline code
+:not(pre) > code {
+  padding: 0.2em 0.4em;
+  background-color: #f5f6fa;
+  border-radius: 0.25rem;
+  color: $brand-accent;
+  font-size: 0.9em;
+}
+
+// Mermaid diagram styling
+.mermaid {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+// Footer styling
+.site-footer {
+  border-top: 2px solid $brand-primary;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+// Badge styling
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.375rem;
+
+  &.badge-new {
+    background-color: $brand-success;
+  }
+
+  &.badge-updated {
+    background-color: $brand-primary;
+  }
+
+  &.badge-security {
+    background-color: $brand-danger;
+  }
+
+  &.badge-research {
+    background-color: $brand-accent;
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $brand-primary;
+  border-radius: 5px;
+
+  &:hover {
+    background: $brand-secondary;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 1.25rem;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+}
+
+// Print styles
+@media print {
+  .site-header,
+  .site-nav,
+  .site-footer,
+  .aux-nav {
+    display: none;
+  }
+
+  .main-content {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+

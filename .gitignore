@@ -1,0 +1,46 @@
+# Jekyll build artifacts
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/.sass-cache/
+docs/Gemfile.lock
+
+# Ruby
+*.gem
+.bundle
+vendor/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+
+# Temporary files
+*.tmp
+*.log
+
+# Node modules (if using npm for any tooling)
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
