@@ -317,8 +317,8 @@ This repository evolved from an enterprise workflow template. Original documenta
 
 ### Step 5: Deploy Standard Operating Procedures
 
-1. Review and customize [Governance_SOP_Playbook.md](Governance_SOP_Playbook.md)
-2. Conduct training sessions using `Training_Slides.pptx`
+1. Review and customize [Governance_SOP_Playbook.md](archive/Governance_SOP_Playbook.md)
+2. Conduct training sessions using `docs/assets/downloads/Training_Slides.pptx`
 3. Publish SOPs to internal wiki/documentation portal
 4. Schedule quarterly compliance reviews
 
@@ -458,7 +458,7 @@ The provided `azure-pipeline.yaml` is a template. Customize the build stage:
 
 ### Pilot Deployment
 
-Week 3-4 of the [Implementation Roadmap](Implementation_Roadmap.xlsx):
+Week 3-4 of the [Implementation Roadmap](archive/Implementation_Roadmap.pdf):
 
 1. Select pilot team (5-10 developers)
 2. Deploy to pre-production environment
@@ -478,7 +478,7 @@ All team members must complete:
 3. **GitHub Security Features** (3 hours)
 4. **Incident Response Procedures** (2 hours)
 
-Training materials provided in `Training_Slides.pptx`.
+Training materials provided in [`Training_Slides.pptx`](docs/assets/downloads/Training_Slides.pptx).
 
 ## 🆘 Support & Troubleshooting
 
@@ -495,8 +495,8 @@ Training materials provided in `Training_Slides.pptx`.
 
 ### Getting Help
 
-- Review the [Technical Addendum](Technical_Addendum.md) for detailed architecture
-- Consult the [Governance Playbook](Governance_SOP_Playbook.md) for procedures
+- Review the [Technical Addendum](archive/Technical_Addendum.md) for detailed architecture
+- Consult the [Governance Playbook](archive/Governance_SOP_Playbook.md) for procedures
 - Contact your security architecture team for guidance
 
 ## 🤝 Contributing
@@ -553,9 +553,9 @@ For questions, feedback, or case studies on implementing this template:
 
 **🚀 Start your secure AI-accelerated development journey today!**
 
-1. Review the [Business Justification](Business_Justification.md)
-2. Study the [Technical Addendum](Technical_Addendum.md)
-3. Implement the [Governance Playbook](Governance_SOP_Playbook.md)
-4. Deploy using the 6-week roadmap
+1. Review the [Business Justification](archive/Business_Justification.md)
+2. Study the [Technical Addendum](archive/Technical_Addendum.md)
+3. Implement the [Governance Playbook](archive/Governance_SOP_Playbook.md)
+4. Deploy using the [6-week roadmap](archive/Implementation_Roadmap.pdf)
 5. Measure, iterate, and improve!
 
