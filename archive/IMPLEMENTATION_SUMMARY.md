@@ -234,7 +234,7 @@ Create detailed guides for remaining vendors:
 ### Local Testing
 
 ```bash
-cd /Users/derek/Library/CloudStorage/OneDrive-zimaxnet/NICO_AI_Workflow_Final_Package/docs
+cd /path/to/secai-framework/docs
 bundle install
 bundle exec jekyll serve
 # Visit http://localhost:4000

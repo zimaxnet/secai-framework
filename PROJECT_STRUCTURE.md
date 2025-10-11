@@ -8,7 +8,7 @@
 ## Clean Root Directory Structure
 
 ```
-/Users/derek/Library/CloudStorage/OneDrive-zimaxnet/NICO_AI_Workflow_Final_Package/
+secai-framework/
 │
 ├── .github/                       # GitHub Actions workflows
 │   └── workflows/

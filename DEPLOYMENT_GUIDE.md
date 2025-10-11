@@ -97,7 +97,7 @@ gem --version
 
 ```bash
 # Navigate to docs directory
-cd /Users/derek/Library/CloudStorage/OneDrive-zimaxnet/NICO_AI_Workflow_Final_Package/docs
+cd /path/to/secai-framework/docs
 
 # Install dependencies
 bundle install
@@ -154,7 +154,7 @@ grep -r "\[Your " docs/
 
 ```bash
 # Initialize git (if not already initialized)
-cd /Users/derek/Library/CloudStorage/OneDrive-zimaxnet/NICO_AI_Workflow_Final_Package
+cd /path/to/secai-framework
 git init
 
 # Add all files

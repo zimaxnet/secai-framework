@@ -38,7 +38,7 @@ Vendor Documentation:
 ### File Structure
 
 ```
-/Users/derek/Library/CloudStorage/OneDrive-zimaxnet/NICO_AI_Workflow_Final_Package/
+secai-framework/
 ├── docs/                          # GitHub Pages Jekyll site ✅
 │   ├── _config.yml               # Jekyll configuration ✅
 │   ├── Gemfile                   # Ruby dependencies ✅
