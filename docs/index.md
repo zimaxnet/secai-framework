@@ -20,6 +20,27 @@ Enterprise-grade security research and practical guidance for securing Cursor ID
 
 ---
 
+## 🛠️ Implementation Package Available!
+{: .label .label-green }
+
+The **complete technical implementation** is now available in this repository!
+
+**[→ Browse Implementation Folder](https://github.com/zimaxnet/secai-framework/tree/main/implementation){: .btn .btn-purple }**
+
+The `implementation/` folder contains:
+- ✅ **PowerShell Scripts** - Data collection scripts (00-10) for Azure assessments
+- ✅ **Python Tools** - Transformation (11-17) and analysis (18-19) scripts
+- ✅ **Excel Templates** - Assessment workbooks with 12 security domains
+- ✅ **HTML Dashboards** - Team-specific report templates
+- ✅ **Documentation** - 35+ implementation guides and execution procedures
+- ✅ **Three-Dimensional Assessment** - Configuration, Process, and Best Practices methodology
+
+Perfect for: Azure security assessments, CSP-to-MCA migrations, Landing Zone validations, and compliance audits.
+
+[Implementation README](https://github.com/zimaxnet/secai-framework/blob/main/implementation/README.md){: .btn .btn-outline }
+[Quick Start Guide](https://github.com/zimaxnet/secai-framework/blob/main/implementation/QUICK_START.md){: .btn .btn-outline }
+---
+
 ## About the SecAI Framework
 
 The **SecAI Framework** is a comprehensive security framework for AI-accelerated development, focusing on **Cursor IDE** and **Azure AI Foundry**. Created from a security architect's perspective, the framework provides:
