@@ -1,0 +1,79 @@
+# Secure AI-Accelerated Enterprise Workflow - Azure Pipeline Template
+# This pipeline demonstrates OIDC authentication and secure secret management
+# Replace placeholder values with your organization's resources
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- group: Enterprise-KeyVault-Secrets  # Link to Azure Key Vault variable group
+
+stages:
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+  - job: Build
+    displayName: 'Build Application'
+    steps:
+    - checkout: self
+      displayName: 'Checkout Source Code'
+    
+    - script: |
+        echo "Installing dependencies..."
+        # Example: npm install, pip install -r requirements.txt, etc.
+      displayName: 'Install Dependencies'
+    
+    - script: |
+        echo "Running linters..."
+        # Example: npm run lint, pylint, etc.
+      displayName: 'Code Quality Checks'
+    
+    - script: |
+        echo "Running unit tests..."
+        # Example: npm test, pytest, etc.
+      displayName: 'Unit Tests'
+    
+    - script: |
+        echo "Running security scans..."
+        # Example: npm audit, safety check, etc.
+      displayName: 'Security Vulnerability Scan'
+
+- stage: Deploy
+  displayName: 'Deploy Infrastructure'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy with OIDC'
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Authenticate with OIDC Federated Identity'
+      inputs:
+        azureSubscription: 'Enterprise-OIDC-ServiceConnection'  # Replace with your service connection name
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "✓ Authenticated with federated identity (OIDC)"
+          echo "✓ No long-lived credentials required"
+          
+          # Retrieve secrets securely from Key Vault
+          echo "Retrieving secrets from Key Vault..."
+          secret=$(az keyvault secret show \
+            --vault-name YourKeyVaultName \
+            --name sample-secret \
+            --query value -o tsv)
+          
+          echo "✓ Secret retrieved securely (masked in logs)"
+          
+          # Deploy infrastructure (example with Bicep)
+          echo "Deploying infrastructure as code..."
+          # az deployment group create \
+          #   --resource-group YourResourceGroup \
+          #   --template-file ./infra/main.bicep \
+          #   --parameters secretValue=$secret
+          
+    - script: echo "✓ Deployment completed successfully"
+      displayName: 'Finalize Deployment'

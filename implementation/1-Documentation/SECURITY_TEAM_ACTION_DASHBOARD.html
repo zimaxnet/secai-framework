@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Team Action Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #106ebe;
+            border-left: 5px solid #0078d4;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        h3 {
+            color: #2b88d8;
+            margin-top: 25px;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .stat-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-card.critical {
+            border-color: #e81123;
+            background-color: #fde7e9;
+        }
+        .stat-card.high {
+            border-color: #ffb900;
+            background-color: #fff4ce;
+        }
+        .stat-card.medium {
+            border-color: #0078d4;
+            background-color: #e7f3ff;
+        }
+        .stat-card.good {
+            border-color: #107c10;
+            background-color: #dff6dd;
+        }
+        .stat-value {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .stat-card.critical .stat-value {
+            color: #a80000;
+        }
+        .stat-card.high .stat-value {
+            color: #8a6d00;
+        }
+        .stat-card.good .stat-value {
+            color: #0b5a0b;
+        }
+        .stat-label {
+            font-size: 1em;
+            color: #666;
+        }
+        .action-item {
+            background-color: #f9f9f9;
+            border-left: 5px solid #e81123;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .action-item.high {
+            border-color: #ffb900;
+        }
+        .action-item.medium {
+            border-color: #0078d4;
+        }
+        .action-number {
+            display: inline-block;
+            background-color: #e81123;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        .action-item.high .action-number {
+            background-color: #ffb900;
+            color: #000;
+        }
+        .action-item.medium .action-number {
+            background-color: #0078d4;
+        }
+        .action-title {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .action-meta {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #0078d4;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        .priority-p1 {
+            background-color: #e81123;
+            color: white;
+        }
+        .priority-p2 {
+            background-color: #ffb900;
+            color: #000;
+        }
+        .priority-p3 {
+            background-color: #0078d4;
+            color: white;
+        }
+        .checklist {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            padding: 10px;
+            margin: 8px 0;
+            background-color: #f9f9f9;
+            border-left: 4px solid #0078d4;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Security Team Action Dashboard</h1>
+            <div class="subtitle">Prioritized Remediation Plan - October 16, 2025</div>
+        </div>
+
+        <!-- OVERALL STATUS -->
+        <h2>📊 Current Security Status</h2>
+        
+        <div class="stat-grid">
+            <div class="stat-card critical">
+                <div class="stat-label">Critical Risks</div>
+                <div class="stat-value">3</div>
+            </div>
+            <div class="stat-card high">
+                <div class="stat-label">High Risks</div>
+                <div class="stat-value">3</div>
+            </div>
+            <div class="stat-card critical">
+                <div class="stat-label">Critical Subscriptions</div>
+                <div class="stat-value">24</div>
+            </div>
+            <div class="stat-card high">
+                <div class="stat-label">Unhealthy Findings</div>
+                <div class="stat-value">1,931</div>
+            </div>
+            <div class="stat-card medium">
+                <div class="stat-label">Avg Secure Score</div>
+                <div class="stat-value">44%</div>
+            </div>
+            <div class="stat-card good">
+                <div class="stat-label">Data Collected</div>
+                <div class="stat-value">✓</div>
+            </div>
+        </div>
+
+        <p><strong>Overall Assessment:</strong> Environment requires immediate security attention. 71% of subscriptions (24 of 34) are at CRITICAL risk level. However, data collection is complete and remediation can begin immediately.</p>
+
+        <!-- IMMEDIATE ACTIONS -->
+        <h2>🚨 Immediate Actions (This Week)</h2>
+
+        <div class="action-item">
+            <div class="action-title">
+                <span class="action-number">1</span>
+                EMERGENCY: Fix Critical Secure Score Subscriptions
+            </div>
+            <p><strong>Issue:</strong> 14 subscriptions have critically low Secure Score (below 10%), with one at 1.5%</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Identify the 1.5% subscription (ID: 1277437f...) and perform emergency security review</li>
+                <li>Review all Defender recommendations for the 14 critical subscriptions</li>
+                <li>Implement quick wins (network security rules, access restrictions, encryption)</li>
+                <li>Escalate to management if resources need immediate shutdown</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> 2-3 days</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Security Team Lead</div>
+                <div class="meta-item">🎯 <strong>Goal:</strong> Get all subscriptions above 40%</div>
+            </div>
+        </div>
+
+        <div class="action-item">
+            <div class="action-title">
+                <span class="action-number">2</span>
+                Enable Key Vault Protection - ALL 234 Vaults
+            </div>
+            <p><strong>Issue:</strong> 0% of Key Vaults have soft delete or purge protection enabled</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Create Azure Policy to enforce soft delete on all Key Vaults</li>
+                <li>Create Azure Policy to enforce purge protection</li>
+                <li>Apply policies at tenant/management group level</li>
+                <li>Remediate existing 234 Key Vaults via bulk script</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> 5-7 days</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Cloud Security Engineer</div>
+                <div class="meta-item">📋 <strong>Policy:</strong> Audit then enforce</div>
+            </div>
+        </div>
+
+        <!-- WEEK 1-2 ACTIONS -->
+        <h2>📅 Week 1-2 Actions</h2>
+
+        <div class="action-item">
+            <div class="action-title">
+                <span class="action-number">3</span>
+                Secure SQL Servers - Disable Public Access (25 servers)
+            </div>
+            <p><strong>Issue:</strong> 96% of SQL servers (25 of 26) have public network access enabled</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Inventory applications connecting to each SQL server</li>
+                <li>Deploy Private Endpoints for each SQL server</li>
+                <li>Update application connection strings to use private endpoints</li>
+                <li>Disable public network access after validation</li>
+                <li>Monitor for connectivity issues during 48-hour window</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> 2-3 weeks</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Database Team + Network Team</div>
+                <div class="meta-item">⚠️ <strong>Risk:</strong> Application connectivity - test thoroughly</div>
+            </div>
+        </div>
+
+        <div class="action-item high">
+            <div class="action-title">
+                <span class="action-number">4</span>
+                Audit and Reduce Owner Assignments (315 assignments)
+            </div>
+            <p><strong>Issue:</strong> 315 Owner role assignments - excessive privileged access</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Export all Owner assignments from <code>role_assignments.csv</code></li>
+                <li>Review each assignment for business justification</li>
+                <li>Identify assignments that can be downgraded to Contributor or custom roles</li>
+                <li>Implement PIM (Privileged Identity Management) for temporary elevated access</li>
+                <li>Create group-based assignments to replace direct user assignments</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> 2-4 weeks</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Identity & Access Team</div>
+                <div class="meta-item">📊 <strong>Target:</strong> Reduce to &lt;100 Owner assignments</div>
+            </div>
+        </div>
+
+        <!-- MONTH 1 ACTIONS -->
+        <h2>📅 Month 1 Actions (Next 30 Days)</h2>
+
+        <div class="action-item high">
+            <div class="action-title">
+                <span class="action-number">5</span>
+                Remediate 1,931 Unhealthy Security Findings
+            </div>
+            <p><strong>Issue:</strong> Defender for Cloud identified 1,931 unhealthy security assessments</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Filter <code>security_assessments.csv</code> for Status = "Unhealthy"</li>
+                <li>Group findings by Assessment Name to identify common issues</li>
+                <li>Prioritize findings that appear across many subscriptions</li>
+                <li>Create remediation runbooks for top 10 most common findings</li>
+                <li>Assign findings to resource owners by subscription</li>
+                <li>Track remediation progress weekly</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> Ongoing - 3-6 months</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Security Team + Resource Owners</div>
+                <div class="meta-item">🎯 <strong>Goal:</strong> Reduce by 50% in 90 days</div>
+            </div>
+        </div>
+
+        <div class="action-item high">
+            <div class="action-title">
+                <span class="action-number">6</span>
+                Deploy Azure Backup Infrastructure
+            </div>
+            <p><strong>Issue:</strong> 0 Recovery Services vaults - no backup capability</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Design backup strategy (RPO/RTO requirements per workload)</li>
+                <li>Deploy Recovery Services vaults in primary regions</li>
+                <li>Configure backup policies (daily, weekly, monthly retention)</li>
+                <li>Enable backup for critical VMs, databases, and file shares</li>
+                <li>Test restore procedures</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> 3-4 weeks</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Infrastructure Team</div>
+                <div class="meta-item">💰 <strong>Budget:</strong> Required for backup storage costs</div>
+            </div>
+        </div>
+
+        <div class="action-item medium">
+            <div class="action-title">
+                <span class="action-number">7</span>
+                Complete Diagnostic Settings Coverage
+            </div>
+            <p><strong>Issue:</strong> 9 subscriptions (26%) lack diagnostic settings</p>
+            <p><strong>Action Required:</strong></p>
+            <ul>
+                <li>Identify the 9 subscriptions without diagnostic settings</li>
+                <li>Configure Activity Log diagnostic settings for all subscriptions</li>
+                <li>Route logs to centralized Log Analytics workspace</li>
+                <li>Enable 90-day retention minimum</li>
+            </ul>
+            <div class="action-meta">
+                <div class="meta-item">⏱️ <strong>Timeline:</strong> 3-5 days</div>
+                <div class="meta-item">👥 <strong>Owner:</strong> Monitoring Team</div>
+                <div class="meta-item">📊 <strong>Target:</strong> 100% coverage</div>
+            </div>
+        </div>
+
+        <!-- CRITICAL SUBSCRIPTIONS -->
+        <h2>🎯 Focus: Top 10 Highest-Risk Subscriptions</h2>
+
+        <p>These subscriptions require immediate attention. All have risk scores of 75+ (CRITICAL level):</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Subscription ID</th>
+                    <th>Risk Score</th>
+                    <th>Secure Score</th>
+                    <th>Unhealthy</th>
+                    <th>Owners</th>
+                    <th>Primary Issue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #fde7e9;">
+                    <td><strong>1</strong></td>
+                    <td>1277437f...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>1.5%</td>
+                    <td>76</td>
+                    <td>11</td>
+                    <td>Critically low score - EMERGENCY</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0df37bf5...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.7%</td>
+                    <td>68</td>
+                    <td>10</td>
+                    <td>Key Vault protection, unhealthy items</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2ff6e292...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.6%</td>
+                    <td>65</td>
+                    <td>9</td>
+                    <td>Key Vault protection, unhealthy items</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>43d5bcae...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.6%</td>
+                    <td>78</td>
+                    <td>10</td>
+                    <td>Highest unhealthy count</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>73fd7069...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.6%</td>
+                    <td>79</td>
+                    <td>10</td>
+                    <td>Highest unhealthy count</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>796e73bc...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>57.2%</td>
+                    <td>155</td>
+                    <td>9</td>
+                    <td>Most unhealthy items (155)</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>80b41aae...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.7%</td>
+                    <td>68</td>
+                    <td>10</td>
+                    <td>Key Vault protection</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>96c11df0...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.6%</td>
+                    <td>70</td>
+                    <td>9</td>
+                    <td>Multiple issues</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>97b2bece...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.6%</td>
+                    <td>78</td>
+                    <td>10</td>
+                    <td>High unhealthy count</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>9c2caf14...</td>
+                    <td><span class="priority-badge priority-p1">75</span></td>
+                    <td>69.7%</td>
+                    <td>69</td>
+                    <td>10</td>
+                    <td>Standard issues</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- QUICK WINS -->
+        <h2>⚡ Quick Wins (Can Complete This Week)</h2>
+
+        <ul class="checklist">
+            <li><strong>Enable Key Vault Soft Delete:</strong> Deploy Azure Policy (1-2 days implementation)</li>
+            <li><strong>Review Subscription 1277437f (1.5% score):</strong> Emergency audit and immediate fixes (2-3 days)</li>
+            <li><strong>Complete Diagnostic Settings:</strong> Enable on 9 remaining subscriptions (1 day)</li>
+            <li><strong>Document Current State:</strong> Brief management on findings and get budget approval (1 day)</li>
+            <li><strong>Create Remediation Tracking:</strong> Excel tracker for all 1,931 unhealthy items (1 day)</li>
+        </ul>
+
+        <!-- 30 DAY ROADMAP -->
+        <h2>📅 30-Day Security Roadmap</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Focus Area</th>
+                    <th>Deliverable</th>
+                    <th>Success Metric</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Week 1</strong></td>
+                    <td>Emergency Response</td>
+                    <td>Fix critical score subscriptions, enable KV protection</td>
+                    <td>0 subscriptions below 10%</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 2</strong></td>
+                    <td>SQL Security</td>
+                    <td>Deploy Private Endpoints for SQL, disable public access</td>
+                    <td>0 SQL servers publicly accessible</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 3</strong></td>
+                    <td>Backup Implementation</td>
+                    <td>Deploy Recovery vaults, enable backup for critical VMs</td>
+                    <td>80% of production VMs backed up</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 4</strong></td>
+                    <td>RBAC Cleanup</td>
+                    <td>Audit Owner assignments, implement PIM</td>
+                    <td>Reduce Owner assignments by 30%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- DATA SOURCES -->
+        <h2>📁 Data Sources for Action Items</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Action Item</th>
+                    <th>CSV File to Use</th>
+                    <th>Filter/Sort</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Critical Subscriptions</td>
+                    <td><code>subscription_comparison.csv</code></td>
+                    <td>Filter: Risk Level = CRITICAL</td>
+                </tr>
+                <tr>
+                    <td>Key Vault Protection</td>
+                    <td><code>key_vaults.csv</code></td>
+                    <td>Filter: Soft Delete = No</td>
+                </tr>
+                <tr>
+                    <td>SQL Public Access</td>
+                    <td><code>sql_servers.csv</code></td>
+                    <td>Filter: Public Network Access = Enabled</td>
+                </tr>
+                <tr>
+                    <td>Owner Assignments</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Role Name = Owner</td>
+                </tr>
+                <tr>
+                    <td>Unhealthy Findings</td>
+                    <td><code>security_assessments.csv</code></td>
+                    <td>Filter: Status = Unhealthy</td>
+                </tr>
+                <tr>
+                    <td>Low Secure Scores</td>
+                    <td><code>secure_scores.csv</code></td>
+                    <td>Sort: Percentage ascending</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- TRACKING PROGRESS -->
+        <h2>📈 Tracking Progress</h2>
+
+        <h3>Weekly Metrics to Track</h3>
+        <ul>
+            <li>✅ Number of subscriptions below 40% Secure Score (Target: 0)</li>
+            <li>✅ Total unhealthy security assessments (Target: &lt;500)</li>
+            <li>✅ Key Vaults with soft delete enabled (Target: 234/234 = 100%)</li>
+            <li>✅ SQL servers with public access (Target: 0)</li>
+            <li>✅ Owner role assignments (Target: &lt;100)</li>
+            <li>✅ Average Secure Score across all subscriptions (Target: &gt;70%)</li>
+        </ul>
+
+        <h3>Reporting Cadence</h3>
+        <ul>
+            <li><strong>Daily:</strong> Update on critical subscription remediation (Week 1)</li>
+            <li><strong>Weekly:</strong> Security metrics dashboard to management</li>
+            <li><strong>Monthly:</strong> Re-run assessment scripts to measure improvement</li>
+            <li><strong>Quarterly:</strong> Full security assessment and executive briefing</li>
+        </ul>
+
+        <!-- TEAM ASSIGNMENTS -->
+        <h2>👥 Team Assignments</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Team/Role</th>
+                    <th>Primary Responsibility</th>
+                    <th>Action Items</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Security Team Lead</strong></td>
+                    <td>Overall coordination</td>
+                    <td>Actions #1, #4, #5</td>
+                </tr>
+                <tr>
+                    <td><strong>Cloud Security Engineer</strong></td>
+                    <td>Key Vault protection</td>
+                    <td>Action #2</td>
+                </tr>
+                <tr>
+                    <td><strong>Database Team</strong></td>
+                    <td>SQL security</td>
+                    <td>Action #3</td>
+                </tr>
+                <tr>
+                    <td><strong>Network Team</strong></td>
+                    <td>Private Endpoints, Firewall</td>
+                    <td>Action #3</td>
+                </tr>
+                <tr>
+                    <td><strong>Identity Team</strong></td>
+                    <td>RBAC cleanup, PIM</td>
+                    <td>Action #4</td>
+                </tr>
+                <tr>
+                    <td><strong>Infrastructure Team</strong></td>
+                    <td>Backup implementation</td>
+                    <td>Action #6</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- TOOLS & RESOURCES -->
+        <h2>🔧 Tools & Resources</h2>
+
+        <h3>CSV Files Location</h3>
+        <p><code>C:\CustomerEnv-Workspace\Azure_Assessment_Kit\transformed\</code></p>
+
+        <h3>Analysis Reports Location</h3>
+        <p><code>C:\CustomerEnv-Workspace\Azure_Assessment_Kit\analysis\</code></p>
+
+        <h3>Key Files for Security Team</h3>
+        <ul>
+            <li><strong>top_security_risks.csv</strong> - All 7 identified risks with details</li>
+            <li><strong>subscription_comparison.csv</strong> - Complete risk ranking of all 34 subscriptions</li>
+            <li><strong>high_risk_subscriptions.csv</strong> - Filtered view of critical/high risk only</li>
+            <li><strong>security_assessments.csv</strong> - All 18,142 Defender findings</li>
+            <li><strong>secure_scores.csv</strong> - Secure Scores for all subscriptions</li>
+        </ul>
+
+        <h3>Useful PowerShell Commands</h3>
+        <div style="background-color: #f0f0f0; padding: 15px; border-radius: 5px; font-family: 'Consolas', monospace; margin: 15px 0;">
+            <p># Count Key Vaults without soft delete (for verification)<br>
+            az keyvault list --query "[?properties.enableSoftDelete==false]" -o table</p>
+            
+            <p># Enable soft delete on specific Key Vault<br>
+            az keyvault update --name &lt;vault-name&gt; --enable-soft-delete true --enable-purge-protection true</p>
+            
+            <p># Check SQL server public access<br>
+            az sql server list --query "[].{name:name, publicAccess:publicNetworkAccess}" -o table</p>
+        </div>
+
+        <!-- SUCCESS CRITERIA -->
+        <h2>✅ Success Criteria (90 Days)</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Current</th>
+                    <th>Target (90 days)</th>
+                    <th>Stretch Goal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Average Secure Score</td>
+                    <td>44.1%</td>
+                    <td>&gt;70%</td>
+                    <td>&gt;85%</td>
+                </tr>
+                <tr>
+                    <td>Subscriptions Below 40%</td>
+                    <td>14</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Unhealthy Findings</td>
+                    <td>1,931</td>
+                    <td>&lt;500</td>
+                    <td>&lt;200</td>
+                </tr>
+                <tr>
+                    <td>Key Vaults with Protection</td>
+                    <td>0%</td>
+                    <td>100%</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>SQL Public Access</td>
+                    <td>25 servers</td>
+                    <td>0 servers</td>
+                    <td>0 servers</td>
+                </tr>
+                <tr>
+                    <td>Owner Assignments</td>
+                    <td>315</td>
+                    <td>&lt;150</td>
+                    <td>&lt;100</td>
+                </tr>
+                <tr>
+                    <td>Backup Coverage</td>
+                    <td>0%</td>
+                    <td>80%</td>
+                    <td>100%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CONTACT INFO -->
+        <h2>📞 Escalation & Support</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue Type</th>
+                    <th>Contact</th>
+                    <th>SLA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Critical Security Incident</td>
+                    <td>Security Team Lead</td>
+                    <td>Immediate</td>
+                </tr>
+                <tr>
+                    <td>Policy Deployment Issues</td>
+                    <td>Cloud Governance Team</td>
+                    <td>24 hours</td>
+                </tr>
+                <tr>
+                    <td>SQL Security Questions</td>
+                    <td>Database Team</td>
+                    <td>48 hours</td>
+                </tr>
+                <tr>
+                    <td>RBAC/PIM Issues</td>
+                    <td>Identity Team</td>
+                    <td>48 hours</td>
+                </tr>
+                <tr>
+                    <td>Azure Backup Setup</td>
+                    <td>Infrastructure Team</td>
+                    <td>72 hours</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- NEXT ASSESSMENT -->
+        <h2>🔄 Next Assessment</h2>
+
+        <p><strong>Recommended Schedule:</strong></p>
+        <ul>
+            <li><strong>30 Days:</strong> Quick re-scan to verify critical fixes (Scripts 06-09 only)</li>
+            <li><strong>90 Days:</strong> Full re-assessment to measure progress (All scripts 01-09)</li>
+            <li><strong>Quarterly:</strong> Ongoing security posture monitoring</li>
+        </ul>
+
+        <p><strong>To Re-run Assessment:</strong></p>
+        <ol>
+            <li>Request PIM access (8-hour window)</li>
+            <li>Run scripts 06-09 for security data only (~2 hours)</li>
+            <li>Run transformation scripts 11, 13, 15 for comparison</li>
+            <li>Run analysis scripts 18-19 to see improvement</li>
+            <li>Compare with baseline from October 16, 2025</li>
+        </ol>
+
+        <!-- FOOTER -->
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+        
+        <div style="text-align: center; color: #666; padding: 20px;">
+            <p><strong>Security Team Action Dashboard</strong><br>
+            Assessment Date: October 15-16, 2025<br>
+            Generated: October 16, 2025</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                This dashboard is automatically generated from collected data.<br>
+                Update by re-running analysis scripts: <code>18_analyze_top_risks.py</code> and <code>19_analyze_subscription_comparison.py</code>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

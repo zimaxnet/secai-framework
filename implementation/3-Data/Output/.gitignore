@@ -1,0 +1,28 @@
+# SecAI Framework - Output Data Protection
+# 
+# This .gitignore prevents customer-specific data from being committed
+# 
+# All JSON and CSV files in this folder contain sensitive customer data:
+# - Subscription names and IDs
+# - Management group hierarchies
+# - Resource configurations
+# - Network topologies
+# - RBAC assignments
+# - Security findings
+#
+# These files should NEVER be committed to version control
+
+# Ignore all data files
+*.json
+*.csv
+*.txt
+
+# Ignore all subdirectories (if created)
+*/
+
+# Keep this .gitignore
+!.gitignore
+
+# Keep the README
+!README.md
+

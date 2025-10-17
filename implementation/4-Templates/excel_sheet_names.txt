@@ -1,0 +1,17 @@
+Introduction
+Summary
+Azure Landing Questions
+Setup-Questions
+Network security
+Identity management
+Privileged access
+Data protection
+Asset management
+Logging and threat detection
+Incident response
+Posture and vulnerability manag
+Endpoint security
+Backup and recovery
+DevOps security
+Governance and strategy
+Sources

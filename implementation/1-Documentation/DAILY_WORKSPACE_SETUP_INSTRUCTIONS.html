@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Workspace Setup - Azure Assessment Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #106ebe;
+            margin-top: 30px;
+            border-left: 4px solid #0078d4;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2b88d8;
+            margin-top: 20px;
+        }
+        .warning {
+            background-color: #fff4ce;
+            border-left: 4px solid #ffb900;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning-title {
+            font-weight: bold;
+            color: #8a6d00;
+            margin-bottom: 5px;
+        }
+        .critical {
+            background-color: #fde7e9;
+            border-left: 4px solid #e81123;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .critical-title {
+            font-weight: bold;
+            color: #a80000;
+            margin-bottom: 5px;
+        }
+        .info {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0078d4;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .info-title {
+            font-weight: bold;
+            color: #004578;
+            margin-bottom: 5px;
+        }
+        .success {
+            background-color: #dff6dd;
+            border-left: 4px solid #107c10;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .success-title {
+            font-weight: bold;
+            color: #0b5a0b;
+            margin-bottom: 5px;
+        }
+        .step {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .step-number {
+            display: inline-block;
+            background-color: #0078d4;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        code {
+            background-color: #2d2d2d;
+            color: #d4d4d4;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        .code-block {
+            background-color: #2d2d2d;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .checklist {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0078d4;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .timestamp {
+            color: #666;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Daily Workspace Setup Instructions</h1>
+        <p class="timestamp">Azure Security Assessment Project | Updated: October 16, 2025</p>
+
+        <div class="critical">
+            <div class="critical-title">⚠️ CRITICAL: Ephemeral C: Drive</div>
+            The C: drive is <strong>ephemeral</strong> and is wiped clean when you log off. All work MUST be saved to SharePoint before ending your session, or it will be permanently lost.
+        </div>
+
+        <div class="info">
+            <div class="info-title">📋 Overview</div>
+            This document provides step-by-step instructions for setting up your daily work environment when working with ephemeral virtual machines. Follow these steps each morning and before logging off each day.
+        </div>
+
+        <!-- ========================================= -->
+        <h2>🌅 Morning Setup (Starting Your Day)</h2>
+        <!-- ========================================= -->
+
+        <h3>Step 1: Request PIM Access</h3>
+        <div class="step">
+            <p><span class="step-number">1</span><strong>Before downloading files, request PIM access</strong></p>
+            <ol>
+                <li>Navigate to the Azure Portal</li>
+                <li>Go to <strong>Privileged Identity Management</strong></li>
+                <li>Request access to required subscriptions</li>
+                <li>Select <strong>8-hour duration</strong> (maximum allowed)</li>
+                <li>Wait for approval (typically 5-10 minutes)</li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <div class="warning-title">⏱️ Important</div>
+            PIM access is limited to 8 hours maximum. Plan your work accordingly and request renewal if needed during the day.
+        </div>
+
+        <h3>Step 2: Download Workspace from SharePoint</h3>
+        <div class="step">
+            <p><span class="step-number">2</span><strong>Retrieve the latest workspace package</strong></p>
+            <ol>
+                <li>Open your web browser</li>
+                <li>Navigate to the SharePoint site:
+                    <div class="code-block"><pre>[Company] > [Team Site] > [Project Folder]</pre></div>
+                </li>
+                <li>Locate the file: <code>CustomerEnv-Workspace.zip</code></li>
+                <li>Click <strong>Download</strong></li>
+                <li>Save to your <code>Downloads</code> folder</li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <div class="info-title">💡 Tip</div>
+            Verify the file modification date matches when you uploaded it yesterday to ensure you have the latest version.
+        </div>
+
+        <h3>Step 3: Extract to C: Drive</h3>
+        <div class="step">
+            <p><span class="step-number">3</span><strong>Set up workspace on ephemeral drive</strong></p>
+            <ol>
+                <li>Open <strong>File Explorer</strong></li>
+                <li>Navigate to your <code>Downloads</code> folder</li>
+                <li>Right-click on <code>CustomerEnv-Workspace.zip</code></li>
+                <li>Select <strong>Extract All...</strong></li>
+                <li>Change the destination to:
+                    <div class="code-block"><pre>C:\CustomerEnv-Workspace</pre></div>
+                </li>
+                <li>Click <strong>Extract</strong></li>
+                <li>Wait for extraction to complete</li>
+            </ol>
+        </div>
+
+        <h3>Step 4: Open Workspace in VS Code</h3>
+        <div class="step">
+            <p><span class="step-number">4</span><strong>Launch your development environment</strong></p>
+            <ol>
+                <li>Open <strong>Visual Studio Code</strong></li>
+                <li>Click <strong>File</strong> → <strong>Open Folder...</strong></li>
+                <li>Navigate to: <code>C:\CustomerEnv-Workspace</code></li>
+                <li>Click <strong>Select Folder</strong></li>
+                <li>VS Code will open with your complete workspace</li>
+            </ol>
+        </div>
+
+        <h3>Step 5: Login to Azure via PowerShell</h3>
+        <div class="step">
+            <p><span class="step-number">5</span><strong>Authenticate and configure Azure CLI</strong></p>
+            <ol>
+                <li>In VS Code, open a new <strong>PowerShell terminal</strong>:
+                    <ul>
+                        <li>Menu: <strong>Terminal</strong> → <strong>New Terminal</strong></li>
+                        <li>Or press: <code>Ctrl + `</code> (backtick)</li>
+                    </ul>
+                </li>
+                <li>Navigate to scripts folder:
+                    <div class="code-block"><pre>cd .\Azure_Assessment_Kit\scripts</pre></div>
+                </li>
+                <li>Set PowerShell execution policy (required for downloaded files):
+                    <div class="code-block"><pre>Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process</pre></div>
+                </li>
+                <li>Login to Azure:
+                    <div class="code-block"><pre>.\00_login.ps1</pre></div>
+                </li>
+                <li>Enable SSL bypass (required for corporate proxy):
+                    <div class="code-block"><pre>$env:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION = "1"</pre></div>
+                </li>
+                <li>Verify SSL bypass is set:
+                    <div class="code-block"><pre>$env:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION</pre></div>
+                    Should display: <code>1</code>
+                </li>
+                <li>Verify Azure login:
+                    <div class="code-block"><pre>az account show</pre></div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="success">
+            <div class="success-title">✅ Ready to Work!</div>
+            You're now set up and ready to run assessment scripts or continue your work.
+        </div>
+
+        <!-- ========================================= -->
+        <h2>🌙 End of Day (Before Logging Off)</h2>
+        <!-- ========================================= -->
+
+        <div class="critical">
+            <div class="critical-title">🚨 DO NOT SKIP THIS SECTION</div>
+            Failure to save your work to SharePoint will result in <strong>permanent data loss</strong> when the C: drive is wiped overnight.
+        </div>
+
+        <h3>Step 1: Stop All Running Scripts</h3>
+        <div class="step">
+            <p><span class="step-number">1</span><strong>Ensure all processes are stopped</strong></p>
+            <ol>
+                <li>Check PowerShell terminal for running scripts</li>
+                <li>If a script is running, press <code>Ctrl + C</code> to stop it</li>
+                <li>Wait for the script to cleanly exit</li>
+                <li>Save any open files in VS Code</li>
+            </ol>
+        </div>
+
+        <h3>Step 2: Compress Workspace</h3>
+        <div class="step">
+            <p><span class="step-number">2</span><strong>Create a ZIP archive of your workspace</strong></p>
+            <ol>
+                <li>Open <strong>File Explorer</strong></li>
+                <li>Navigate to: <code>C:\</code></li>
+                <li>Right-click on the <code>CustomerEnv-Workspace</code> folder</li>
+                <li>Select <strong>Send to</strong> → <strong>Compressed (zipped) folder</strong></li>
+                <li>Wait for compression to complete (may take 1-2 minutes)</li>
+                <li>A file named <code>CustomerEnv-Workspace.zip</code> will be created</li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <div class="info-title">💡 Alternative: Use PowerShell</div>
+            You can also compress via PowerShell:
+            <div class="code-block"><pre>Compress-Archive -Path C:\CustomerEnv-Workspace -DestinationPath C:\CustomerEnv-Workspace.zip -Force</pre></div>
+        </div>
+
+        <h3>Step 3: Upload to SharePoint</h3>
+        <div class="step">
+            <p><span class="step-number">3</span><strong>Save workspace to SharePoint</strong></p>
+            <ol>
+                <li>Open your web browser</li>
+                <li>Navigate to the SharePoint site:
+                    <div class="code-block"><pre>[Company] > [Team Site] > [Project Folder]</pre></div>
+                </li>
+                <li>Click <strong>Upload</strong> → <strong>Files</strong></li>
+                <li>Navigate to <code>C:\</code> and select <code>CustomerEnv-Workspace.zip</code></li>
+                <li>Click <strong>Open</strong> to begin upload</li>
+                <li>If the file already exists, choose <strong>Replace</strong></li>
+                <li>Wait for upload to complete (may take 2-5 minutes)</li>
+                <li><strong>Verify the upload completed successfully</strong> before closing the browser</li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <div class="warning-title">⚠️ Verify Upload</div>
+            Always verify the file appears in SharePoint with today's date/time before logging off. Check the file size to ensure it uploaded completely.
+        </div>
+
+        <h3>Step 4: Clean Up (Optional)</h3>
+        <div class="step">
+            <p><span class="step-number">4</span><strong>Remove local files</strong></p>
+            <ol>
+                <li>Close VS Code</li>
+                <li>Delete <code>C:\CustomerEnv-Workspace</code> folder (optional - will be wiped anyway)</li>
+                <li>Delete <code>C:\CustomerEnv-Workspace.zip</code> (optional)</li>
+                <li>Clear Downloads folder (optional)</li>
+            </ol>
+        </div>
+
+        <div class="success">
+            <div class="success-title">✅ Safe to Log Off</div>
+            Your work is now safely stored in SharePoint and can be retrieved tomorrow.
+        </div>
+
+        <!-- ========================================= -->
+        <h2>📋 Daily Checklist</h2>
+        <!-- ========================================= -->
+
+        <h3>Morning Checklist</h3>
+        <ul class="checklist">
+            <li>Request PIM access (8-hour window)</li>
+            <li>Download workspace ZIP from SharePoint</li>
+            <li>Extract to <code>C:\CustomerEnv-Workspace</code></li>
+            <li>Open folder in VS Code</li>
+            <li>Set PowerShell execution policy: <code>Bypass</code></li>
+            <li>Run <code>.\00_login.ps1</code></li>
+            <li>Set SSL bypass environment variable</li>
+            <li>Verify Azure login with <code>az account show</code></li>
+        </ul>
+
+        <h3>End of Day Checklist</h3>
+        <ul class="checklist">
+            <li>Stop all running scripts</li>
+            <li>Save all open files in VS Code</li>
+            <li>Compress <code>C:\CustomerEnv-Workspace</code> to ZIP</li>
+            <li>Upload ZIP to SharePoint</li>
+            <li><strong>Verify upload completed successfully</strong></li>
+            <li>Check file date/time in SharePoint matches today</li>
+            <li>Close all applications</li>
+            <li>Log off</li>
+        </ul>
+
+        <!-- ========================================= -->
+        <h2>🆘 Troubleshooting</h2>
+        <!-- ========================================= -->
+
+        <h3>Issue: PowerShell Scripts Won't Run</h3>
+        <div class="step">
+            <p><strong>Error:</strong> "cannot be loaded. The file ... is not digitally signed"</p>
+            <p><strong>Solution:</strong></p>
+            <div class="code-block"><pre>Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process</pre></div>
+            <p>This sets the policy for the current PowerShell session only.</p>
+        </div>
+
+        <h3>Issue: SSL/Certificate Warnings</h3>
+        <div class="step">
+            <p><strong>Error:</strong> Certificate verification errors or SSL warnings</p>
+            <p><strong>Solution:</strong> Enable SSL bypass:</p>
+            <div class="code-block"><pre>$env:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION = "1"</pre></div>
+            <p>This must be set in <strong>every new PowerShell session</strong>.</p>
+        </div>
+
+        <h3>Issue: Azure CLI Commands Fail</h3>
+        <div class="step">
+            <p><strong>Error:</strong> "Please run 'az login' to setup account"</p>
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li>Ensure PIM access is approved and active</li>
+                <li>Run the login script again: <code>.\00_login.ps1</code></li>
+                <li>Verify login: <code>az account show</code></li>
+            </ol>
+        </div>
+
+        <h3>Issue: Workspace ZIP Not Uploading to SharePoint</h3>
+        <div class="step">
+            <p><strong>Problem:</strong> Upload fails or times out</p>
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li>Check file size - if larger than 250MB, may timeout</li>
+                <li>Check network connectivity</li>
+                <li>Try uploading via OneDrive sync folder instead</li>
+                <li>If all else fails, use a file transfer service or contact IT</li>
+            </ol>
+        </div>
+
+        <h3>Issue: Can't Find Workspace in SharePoint</h3>
+        <div class="step">
+            <p><strong>Problem:</strong> Looking for yesterday's work</p>
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li>Check SharePoint Recycle Bin</li>
+                <li>Check file version history (right-click file → Version History)</li>
+                <li>Ask team member who worked on it last</li>
+                <li>If lost, may need to restart data collection</li>
+            </ol>
+        </div>
+
+        <!-- ========================================= -->
+        <h2>⚡ Quick Reference Commands</h2>
+        <!-- ========================================= -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Command</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Navigate to scripts</td>
+                    <td><code>cd .\Azure_Assessment_Kit\scripts</code></td>
+                </tr>
+                <tr>
+                    <td>Set execution policy</td>
+                    <td><code>Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process</code></td>
+                </tr>
+                <tr>
+                    <td>Login to Azure</td>
+                    <td><code>.\00_login.ps1</code></td>
+                </tr>
+                <tr>
+                    <td>Enable SSL bypass</td>
+                    <td><code>$env:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION = "1"</code></td>
+                </tr>
+                <tr>
+                    <td>Check SSL bypass</td>
+                    <td><code>$env:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION</code></td>
+                </tr>
+                <tr>
+                    <td>Verify Azure login</td>
+                    <td><code>az account show</code></td>
+                </tr>
+                <tr>
+                    <td>List subscriptions</td>
+                    <td><code>az account list --query "[].name" -o table</code></td>
+                </tr>
+                <tr>
+                    <td>Compress workspace</td>
+                    <td><code>Compress-Archive -Path C:\CustomerEnv-Workspace -DestinationPath C:\CustomerEnv-Workspace.zip -Force</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ========================================= -->
+        <h2>📞 Support & Resources</h2>
+        <!-- ========================================= -->
+
+        <div class="info">
+            <div class="info-title">📚 Project Documentation</div>
+            <ul>
+                <li><strong>CONTEXT_FOR_NEW_SESSION.md</strong> - Daily project status and context</li>
+                <li><strong>EXECUTION_GUIDE.md</strong> - Detailed script execution guide</li>
+                <li><strong>QUICK_START_TOMORROW.md</strong> - Quick reference for daily work</li>
+                <li><strong>SSL_PROXY_ISSUE_REPORT.md</strong> - SSL certificate workaround details</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <div class="info-title">👥 Team Contacts</div>
+            <ul>
+                <li><strong>Security Team Lead:</strong> [Name]</li>
+                <li><strong>Azure Support:</strong> [Contact]</li>
+                <li><strong>IT Help Desk:</strong> [Contact]</li>
+                <li><strong>PIM Approvers:</strong> [Contact]</li>
+            </ul>
+        </div>
+
+        <!-- ========================================= -->
+        <h2>❓ Frequently Asked Questions</h2>
+        <!-- ========================================= -->
+
+        <h3>Why is the C: drive ephemeral?</h3>
+        <p>This is a security measure for virtual desktop environments. It ensures no sensitive data persists on the virtual machine after logoff and provides a clean environment each day.</p>
+
+        <h3>What if I forget to upload my work to SharePoint?</h3>
+        <p>Unfortunately, all work on the C: drive will be permanently lost. There is no recovery option. Always follow the end-of-day checklist.</p>
+
+        <h3>Can I save files to another location?</h3>
+        <p>Only persistent locations like SharePoint, OneDrive (if configured), or network drives will preserve your work. The C: drive and local Downloads folder are both ephemeral.</p>
+
+        <h3>How long does PIM access last?</h3>
+        <p>Maximum 8 hours per request. If your work session exceeds 8 hours, you'll need to request PIM access renewal.</p>
+
+        <h3>Why do we need the SSL bypass?</h3>
+        <p>The corporate SSL-inspecting proxy interferes with Azure CLI certificate verification. The bypass is a temporary workaround while a proper certificate solution is implemented.</p>
+
+        <h3>Can I work on multiple machines?</h3>
+        <p>Yes, but always ensure you upload the latest version to SharePoint before switching machines. Download the latest version from SharePoint on each machine.</p>
+
+        <!-- ========================================= -->
+        <div class="warning" style="margin-top: 40px;">
+            <div class="warning-title">⚠️ Remember</div>
+            <ul style="margin-bottom: 0;">
+                <li>The C: drive is <strong>wiped every night</strong></li>
+                <li>Always <strong>upload to SharePoint before logging off</strong></li>
+                <li>Verify upload completion <strong>before closing browser</strong></li>
+                <li>Set SSL bypass <strong>every new PowerShell session</strong></li>
+                <li>PIM access is limited to <strong>8 hours maximum</strong></li>
+            </ul>
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+        
+        <p style="text-align: center; color: #666; font-size: 0.9em;">
+            <strong>Azure Security Assessment Project</strong><br>
+            Last Updated: October 16, 2025<br>
+            Questions? Contact the Security Team
+        </p>
+    </div>
+</body>
+</html>
+

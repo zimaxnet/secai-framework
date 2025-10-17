@@ -1,0 +1,13 @@
+Domain,Assessment Question,Evidence to Collect,CLI / Script,Output Artifact,Notes
+Identity Management,"List all app registrations and service principals","tenant_applications.json, tenant_service_principals.json","./scripts/04_identity_and_privileged.sh","out/tenant_applications.json; out/tenant_service_principals.json",""
+Privileged Access,"Enumerate role assignments at subscription scope","{sub}_role_assignments.json","./scripts/04_identity_and_privileged.sh","out/{sub}_role_assignments.json",""
+Network Security,"Export VNets, NSGs, ASGs, Routes, Firewalls, Private Endpoints","{sub}_vnets.json; {sub}_nsgs.json; {sub}_asgs.json; {sub}_route_tables.json; {sub}_az_firewalls.json; {sub}_private_endpoints.json","./scripts/05_network_security.sh","out/{sub}_*.json",""
+Logging and Threat Detection,"List diagnostic settings and Log Analytics workspaces","{sub}_subscription_diag.json; {sub}_la_workspaces.json","./scripts/07_logging_threat_detection.sh","out/{sub}_*.json",""
+Posture and Vulnerability Management,"Secure score & assessments snapshot","{sub}_secure_score.json; {sub}_security_assessments.json","./scripts/09_posture_vulnerability.sh","out/{sub}_*.json",""
+Data Protection,"Storage, Key Vaults, SQL assets","{sub}_storage.json; {sub}_keyvaults.json; {sub}_sql_servers.json; {sub}_sql_dbs.json","./scripts/06_data_protection.sh","out/{sub}_*.json",""
+Backup and Recovery,"Vaults & backup policies","{sub}_recovery_vaults.json; {sub}_backup_policies.json","./scripts/08_backup_recovery.sh","out/{sub}_*.json",""
+Governance and Strategy,"Policy assignments & sets at subscription","{sub}_policy_assignments.json; {sub}_policy_set_definitions.json","./scripts/03_policies_and_defender.sh","out/{sub}_*.json",""
+DevOps Security,"<If in scope> capture ADO project permissions (manual/API outside az)","N/A","N/A","N/A",""
+Endpoint Security,"Servers/Agents (if any VMs)","Use Defender for Servers in posture exports","./scripts/09_posture_vulnerability.sh","out/{sub}_security_assessments.json",""
+Incident Response,"Sentinel automations (if any)","{sub}_sentinel.json","./scripts/07_logging_threat_detection.sh","out/{sub}_sentinel.json",""
+Asset Management,"Inventory of RGs, resources, and counts","{sub}_rgs.json; {sub}_resources.json; {sub}_resource_type_counts.json","./scripts/02_inventory.sh","out/{sub}_*.json",""

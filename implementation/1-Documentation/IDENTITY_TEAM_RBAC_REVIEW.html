@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Team RBAC Review</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #106ebe;
+            border-left: 5px solid #0078d4;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        h3 {
+            color: #2b88d8;
+            margin-top: 25px;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .metric-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .metric-card.alert {
+            border-color: #e81123;
+            background-color: #fde7e9;
+        }
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #0078d4;
+            margin: 10px 0;
+        }
+        .metric-card.alert .metric-value {
+            color: #a80000;
+        }
+        .metric-label {
+            font-size: 0.95em;
+            color: #666;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0078d4;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .finding {
+            background-color: #f9f9f9;
+            border-left: 5px solid;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .finding.critical {
+            border-color: #e81123;
+            background-color: #fde7e9;
+        }
+        .finding.warning {
+            border-color: #ffb900;
+            background-color: #fff4ce;
+        }
+        .finding.info {
+            border-color: #0078d4;
+            background-color: #e7f3ff;
+        }
+        .finding.good {
+            border-color: #107c10;
+            background-color: #dff6dd;
+        }
+        .finding-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        ul.action-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.action-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background-color: #e7f3ff;
+            border-left: 4px solid #0078d4;
+            border-radius: 3px;
+        }
+        ul.action-list li:before {
+            content: "→ ";
+            color: #0078d4;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+        }
+        .chart-bar {
+            background-color: #0078d4;
+            height: 30px;
+            margin: 8px 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Identity Team RBAC Review</h1>
+            <div class="subtitle">Access Control Audit & Recommendations - October 16, 2025</div>
+        </div>
+
+        <!-- RBAC OVERVIEW -->
+        <h2>📊 RBAC Overview</h2>
+
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">Total Assignments</div>
+                <div class="metric-value">6,269</div>
+            </div>
+            <div class="metric-card alert">
+                <div class="metric-label">Owner Assignments</div>
+                <div class="metric-value">315</div>
+            </div>
+            <div class="metric-card alert">
+                <div class="metric-label">Contributor Assignments</div>
+                <div class="metric-value">438</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Unique Principals</div>
+                <div class="metric-value">1,947</div>
+            </div>
+            <div class="metric-card alert">
+                <div class="metric-label">Direct User Assignments</div>
+                <div class="metric-value">275</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Avg Assignments/Principal</div>
+                <div class="metric-value">3.2</div>
+            </div>
+        </div>
+
+        <!-- KEY FINDINGS -->
+        <h2>🔍 Key Findings</h2>
+
+        <div class="finding critical">
+            <div class="finding-title">🔴 CRITICAL: Excessive Owner Role Assignments</div>
+            <p><strong>Finding:</strong> 315 Owner role assignments across environment (5% of total assignments)</p>
+            <p><strong>Risk:</strong> Owner role provides complete control including:</p>
+            <ul>
+                <li>Full resource management (create, modify, delete)</li>
+                <li>Grant access to others (can create more Owners)</li>
+                <li>Change security settings and policies</li>
+                <li>Delete entire resource groups or subscriptions</li>
+            </ul>
+            <p><strong>Best Practice:</strong> Minimize Owner assignments to &lt;50 for entire organization</p>
+            <p><strong>Current Status:</strong> 6x over recommended maximum</p>
+        </div>
+
+        <div class="finding warning">
+            <div class="finding-title">⚠️ HIGH: Direct User Privileged Access</div>
+            <p><strong>Finding:</strong> 174 direct user assignments with Owner/Contributor/User Access Administrator roles</p>
+            <p><strong>Issue:</strong> Direct user assignments bypass:</p>
+            <ul>
+                <li>Group-based access management</li>
+                <li>Centralized access reviews</li>
+                <li>Automated onboarding/offboarding</li>
+                <li>Access recertification processes</li>
+            </ul>
+            <p><strong>Recommendation:</strong> Migrate all direct user assignments to security groups</p>
+        </div>
+
+        <div class="finding good">
+            <div class="finding-title">✅ STRENGTH: Group-Based Access Management</div>
+            <p><strong>Finding:</strong> 1,652 assignments to Groups (26% of total)</p>
+            <p><strong>Analysis:</strong> Good adoption of group-based access. This is a security best practice.</p>
+            <p><strong>Recommendation:</strong> Continue trend - target 80%+ assignments via groups</p>
+        </div>
+
+        <div class="finding good">
+            <div class="finding-title">✅ STRENGTH: Service Principal Usage</div>
+            <p><strong>Finding:</strong> 4,337 assignments to Service Principals (69% of total)</p>
+            <p><strong>Analysis:</strong> Proper use of managed identities and service principals for automation</p>
+            <p><strong>Status:</strong> Follows Azure best practices for application access</p>
+        </div>
+
+        <!-- TOP ROLES -->
+        <h2>📊 Role Assignment Distribution</h2>
+
+        <h3>Top 10 Roles Assigned</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Role Name</th>
+                    <th>Count</th>
+                    <th>Privilege Level</th>
+                    <th>Action Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Reader</td>
+                    <td>736</td>
+                    <td>Low</td>
+                    <td>✅ Appropriate</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>App Configuration Data Reader</td>
+                    <td>512</td>
+                    <td>Low</td>
+                    <td>✅ Appropriate</td>
+                </tr>
+                <tr style="background-color: #fff4ce;">
+                    <td>3</td>
+                    <td><strong>Contributor</strong></td>
+                    <td>438</td>
+                    <td><strong>HIGH</strong></td>
+                    <td>⚠️ Review - Reduce if possible</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Key Vault Secrets User</td>
+                    <td>426</td>
+                    <td>Medium</td>
+                    <td>✅ Application access - OK</td>
+                </tr>
+                <tr style="background-color: #fde7e9;">
+                    <td>5</td>
+                    <td><strong>Owner</strong></td>
+                    <td>315</td>
+                    <td><strong>CRITICAL</strong></td>
+                    <td>🔴 URGENT - Reduce significantly</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Log Analytics Contributor</td>
+                    <td>267</td>
+                    <td>Medium</td>
+                    <td>✅ Monitoring teams - OK</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>RBAC-Reader-CSP</td>
+                    <td>176</td>
+                    <td>Low</td>
+                    <td>✅ Custom reader role - OK</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Monitoring Contributor</td>
+                    <td>164</td>
+                    <td>Medium</td>
+                    <td>✅ Monitoring teams - OK</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Storage Blob Data Contributor</td>
+                    <td>148</td>
+                    <td>Medium</td>
+                    <td>✅ Application access - OK</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>EventGrid Data Sender</td>
+                    <td>126</td>
+                    <td>Low</td>
+                    <td>✅ Event automation - OK</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PRIVILEGED ACCESS BREAKDOWN -->
+        <h2>🚨 Privileged Access Deep Dive</h2>
+
+        <h3>Privileged Role Summary</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Total</th>
+                    <th>To Users</th>
+                    <th>To Groups</th>
+                    <th>To Service Principals</th>
+                    <th>Risk Assessment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #fde7e9;">
+                    <td><strong>Owner</strong></td>
+                    <td>315</td>
+                    <td>~40</td>
+                    <td>~100</td>
+                    <td>~175</td>
+                    <td>CRITICAL - Reduce by 70%</td>
+                </tr>
+                <tr style="background-color: #fff4ce;">
+                    <td><strong>Contributor</strong></td>
+                    <td>438</td>
+                    <td>~80</td>
+                    <td>~150</td>
+                    <td>~208</td>
+                    <td>HIGH - Review and optimize</td>
+                </tr>
+                <tr>
+                    <td><strong>User Access Administrator</strong></td>
+                    <td>72</td>
+                    <td>~10</td>
+                    <td>~30</td>
+                    <td>~32</td>
+                    <td>MEDIUM - Keep minimal</td>
+                </tr>
+                <tr style="background-color: #ffe9e9;">
+                    <td><strong>TOTAL PRIVILEGED</strong></td>
+                    <td><strong>825</strong></td>
+                    <td>130</td>
+                    <td>280</td>
+                    <td>415</td>
+                    <td>13.2% of all assignments</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Target Distribution:</strong> Privileged assignments should be &lt;5% of total (currently 13.2%)</p>
+
+        <!-- SCOPE ANALYSIS -->
+        <h2>🎯 Scope Level Analysis</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scope Level</th>
+                    <th>Assignments</th>
+                    <th>% of Total</th>
+                    <th>Risk</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Subscription</td>
+                    <td>1,526</td>
+                    <td>24%</td>
+                    <td>⚠️ Broad access - review needed</td>
+                </tr>
+                <tr>
+                    <td>Resource Group</td>
+                    <td>924</td>
+                    <td>15%</td>
+                    <td>✅ Appropriate level</td>
+                </tr>
+                <tr>
+                    <td>Resource</td>
+                    <td>435</td>
+                    <td>7%</td>
+                    <td>✅ Most restrictive - ideal</td>
+                </tr>
+                <tr>
+                    <td>Unknown</td>
+                    <td>3,384</td>
+                    <td>54%</td>
+                    <td>ℹ️ Needs classification</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Recommendation:</strong> Move assignments to Resource Group or Resource level where possible. Subscription-level access should be exception, not rule.</p>
+
+        <!-- ACTION ITEMS -->
+        <h2>✅ Identity Team Action Items</h2>
+
+        <h3>Priority 1: Owner Role Audit (Week 1-2)</h3>
+        <ul class="action-list">
+            <li><strong>Export Owner Assignments:</strong> Filter <code>role_assignments.csv</code> for Role Name = "Owner"</li>
+            <li><strong>Review with Managers:</strong> Validate business justification for each of 315 assignments</li>
+            <li><strong>Identify Alternatives:</strong> Determine if custom roles or Contributor would suffice</li>
+            <li><strong>Create Remediation Plan:</strong> Target reduction to &lt;100 Owner assignments</li>
+            <li><strong>Document Exceptions:</strong> For remaining Owners, document why they need this level</li>
+        </ul>
+
+        <h3>Priority 2: Implement PIM for Privileged Access (Week 2-4)</h3>
+        <ul class="action-list">
+            <li><strong>Enable PIM:</strong> Configure Privileged Identity Management in Azure AD</li>
+            <li><strong>Migrate Owners:</strong> Convert permanent Owner assignments to eligible (JIT) assignments</li>
+            <li><strong>Set Approval Workflow:</strong> Require approval for Owner role activation</li>
+            <li><strong>Configure Duration:</strong> Maximum 8-hour elevation window</li>
+            <li><strong>Enable MFA:</strong> Require MFA for all privileged role activations</li>
+            <li><strong>Set Up Alerting:</strong> Alert on privileged role activations</li>
+        </ul>
+
+        <h3>Priority 3: Migrate Direct User Assignments to Groups (Week 3-4)</h3>
+        <ul class="action-list">
+            <li><strong>Identify Direct User Assignments:</strong> 275 total, 174 with privileged access</li>
+            <li><strong>Create Security Groups:</strong> Organized by team/function</li>
+            <li><strong>Add Users to Groups:</strong> Based on job function</li>
+            <li><strong>Assign Roles to Groups:</strong> Replace individual assignments</li>
+            <li><strong>Remove Direct Assignments:</strong> After validation period</li>
+        </ul>
+
+        <h3>Priority 4: Service Principal Review (Month 2)</h3>
+        <ul class="action-list">
+            <li><strong>Audit 4,337 Service Principal Assignments:</strong> Verify each is still needed</li>
+            <li><strong>Check for Orphaned SPNs:</strong> Remove assignments for deleted applications</li>
+            <li><strong>Implement Managed Identities:</strong> Replace SPNs with managed identities where possible</li>
+            <li><strong>Rotate Credentials:</strong> Ensure all SPN credentials rotated in last 90 days</li>
+        </ul>
+
+        <!-- DETAILED BREAKDOWN -->
+        <h2>📈 Principal Type Breakdown</h2>
+
+        <div style="margin: 25px 0;">
+            <div style="margin-bottom: 5px; color: #666;">Service Principals: 4,337 (69%)</div>
+            <div class="chart-bar" style="width: 69%;">4,337</div>
+            
+            <div style="margin-bottom: 5px; margin-top: 15px; color: #666;">Groups: 1,652 (26%)</div>
+            <div class="chart-bar" style="width: 26%;">1,652</div>
+            
+            <div style="margin-bottom: 5px; margin-top: 15px; color: #666;">Users: 275 (4%)</div>
+            <div class="chart-bar" style="width: 15%; background-color: #ffb900;">275</div>
+            
+            <div style="margin-bottom: 5px; margin-top: 15px; color: #666;">Foreign Groups: 5 (&lt;1%)</div>
+            <div class="chart-bar" style="width: 5%; background-color: #666;">5</div>
+        </div>
+
+        <p><strong>Analysis:</strong></p>
+        <ul>
+            <li>✅ <strong>Service Principals (69%):</strong> Expected for automation, APIs, and application access</li>
+            <li>✅ <strong>Groups (26%):</strong> Good practice - should increase to 30-40%</li>
+            <li>⚠️ <strong>Users (4%):</strong> Should be reduced to &lt;2% through group migration</li>
+            <li>ℹ️ <strong>Foreign Groups (5):</strong> External B2B access - verify all are legitimate</li>
+        </ul>
+
+        <!-- OWNER ASSIGNMENTS TABLE -->
+        <h2>👑 Owner Assignment Details</h2>
+
+        <p><strong>Total: 315 Owner assignments requiring review</strong></p>
+
+        <h3>Typical Owner Assignment Scenarios</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Est. Count</th>
+                    <th>Recommendation</th>
+                    <th>Alternative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Legacy/Historical</td>
+                    <td>~100</td>
+                    <td>Remove if no longer needed</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Service Principals for IaC</td>
+                    <td>~75</td>
+                    <td>Reduce to Contributor + User Access Admin</td>
+                    <td>Custom role for specific needs</td>
+                </tr>
+                <tr>
+                    <td>Admin Teams (Groups)</td>
+                    <td>~60</td>
+                    <td>Keep minimal, implement PIM</td>
+                    <td>JIT elevation via PIM</td>
+                </tr>
+                <tr>
+                    <td>Individual Admins</td>
+                    <td>~40</td>
+                    <td>Migrate to PIM-enabled group</td>
+                    <td>Time-bound, MFA-required access</td>
+                </tr>
+                <tr>
+                    <td>External Consultants</td>
+                    <td>~20</td>
+                    <td>Review and expire as needed</td>
+                    <td>Contributor with time limit</td>
+                </tr>
+                <tr>
+                    <td>Legitimate Long-term</td>
+                    <td>~20</td>
+                    <td>Document and approve formally</td>
+                    <td>Annual recertification</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- REMEDIATION ROADMAP -->
+        <h2>🗓️ RBAC Remediation Roadmap</h2>
+
+        <h3>Week 1-2: Data Collection & Analysis</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Owner</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Export all Owner assignments from CSV</td>
+                    <td>Identity Analyst</td>
+                    <td>Excel workbook with Owner details</td>
+                </tr>
+                <tr>
+                    <td>Map principals to business owners</td>
+                    <td>Identity Team</td>
+                    <td>Assignment ownership matrix</td>
+                </tr>
+                <tr>
+                    <td>Survey assignment owners for justification</td>
+                    <td>Identity Lead</td>
+                    <td>Justification database</td>
+                </tr>
+                <tr>
+                    <td>Identify quick removals (orphaned, duplicate)</td>
+                    <td>Identity Team</td>
+                    <td>Initial cleanup list (~50 assignments)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Week 3-4: PIM Implementation</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Owner</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Enable PIM in Azure AD</td>
+                    <td>Azure AD Admin</td>
+                    <td>PIM configured and tested</td>
+                </tr>
+                <tr>
+                    <td>Create eligible assignments for admins</td>
+                    <td>Identity Team</td>
+                    <td>JIT access configured</td>
+                </tr>
+                <tr>
+                    <td>Configure approval workflows</td>
+                    <td>Identity Lead</td>
+                    <td>Approval chain documented</td>
+                </tr>
+                <tr>
+                    <td>Pilot with security team</td>
+                    <td>All teams</td>
+                    <td>Validation and feedback</td>
+                </tr>
+                <tr>
+                    <td>Roll out to all admin teams</td>
+                    <td>Identity Team</td>
+                    <td>100% admin coverage</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Month 2: Group Migration & Cleanup</h3>
+        <ul>
+            <li>Create security groups for common access patterns</li>
+            <li>Migrate 174 direct user privileged assignments to groups</li>
+            <li>Remove unnecessary Owner and Contributor assignments</li>
+            <li>Target: Reduce Owner assignments from 315 to &lt;100</li>
+        </ul>
+
+        <!-- BEST PRACTICES -->
+        <h2>✨ RBAC Best Practices</h2>
+
+        <h3>Principle of Least Privilege</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Instead Of</th>
+                    <th>Use</th>
+                    <th>Benefit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Owner at Subscription</td>
+                    <td>Contributor at Resource Group</td>
+                    <td>Limits blast radius of mistakes</td>
+                </tr>
+                <tr>
+                    <td>Contributor for read-only needs</td>
+                    <td>Reader role</td>
+                    <td>Prevents accidental changes</td>
+                </tr>
+                <tr>
+                    <td>Built-in broad roles</td>
+                    <td>Custom roles with specific permissions</td>
+                    <td>Precise access control</td>
+                </tr>
+                <tr>
+                    <td>Permanent Owner assignment</td>
+                    <td>PIM eligible assignment (JIT)</td>
+                    <td>Time-limited, audited access</td>
+                </tr>
+                <tr>
+                    <td>Direct user assignment</td>
+                    <td>Security group assignment</td>
+                    <td>Centralized management, bulk operations</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PIM IMPLEMENTATION -->
+        <h2>🔐 PIM (Privileged Identity Management) Implementation</h2>
+
+        <h3>PIM Configuration for Owner Role</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>Recommended Value</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Maximum Duration</td>
+                    <td>8 hours</td>
+                    <td>Limit exposure window</td>
+                </tr>
+                <tr>
+                    <td>Require MFA</td>
+                    <td>Yes</td>
+                    <td>Strong authentication</td>
+                </tr>
+                <tr>
+                    <td>Require Approval</td>
+                    <td>Yes</td>
+                    <td>Peer review of elevation</td>
+                </tr>
+                <tr>
+                    <td>Require Justification</td>
+                    <td>Yes</td>
+                    <td>Audit trail</td>
+                </tr>
+                <tr>
+                    <td>Notification on Activation</td>
+                    <td>Yes</td>
+                    <td>Security team awareness</td>
+                </tr>
+                <tr>
+                    <td>Access Review Frequency</td>
+                    <td>Quarterly</td>
+                    <td>Periodic validation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- DATA SOURCES -->
+        <h2>📁 Data Sources for RBAC Review</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Analysis Task</th>
+                    <th>CSV File</th>
+                    <th>Filter/Sort</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>All Owner Assignments</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Role Name = "Owner"</td>
+                </tr>
+                <tr>
+                    <td>All Contributor Assignments</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Role Name = "Contributor"</td>
+                </tr>
+                <tr>
+                    <td>Direct User Privileged Access</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Principal Type = "User" AND Role Name IN (Owner, Contributor, UAA)</td>
+                </tr>
+                <tr>
+                    <td>Subscription-Level Assignments</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Scope Level = "Subscription"</td>
+                </tr>
+                <tr>
+                    <td>Service Principal Access</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Principal Type = "ServicePrincipal"</td>
+                </tr>
+                <tr>
+                    <td>Foreign/External Access</td>
+                    <td><code>role_assignments.csv</code></td>
+                    <td>Filter: Principal Type = "ForeignGroup"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- QUICK COMMANDS -->
+        <h2>⚡ Useful Azure CLI Commands</h2>
+
+        <h3>List All Owner Assignments</h3>
+        <div style="background-color: #f0f0f0; padding: 15px; border-radius: 5px; font-family: 'Consolas', monospace;">
+            az role assignment list --all --query "[?roleDefinitionName=='Owner'].{Principal:principalName, Scope:scope}" -o table
+        </div>
+
+        <h3>Remove Specific Role Assignment</h3>
+        <div style="background-color: #f0f0f0; padding: 15px; border-radius: 5px; font-family: 'Consolas', monospace; margin-top: 15px;">
+            az role assignment delete --assignee &lt;principal-id&gt; --role Owner --scope &lt;scope&gt;
+        </div>
+
+        <h3>Create PIM Eligible Assignment</h3>
+        <div style="background-color: #f0f0f0; padding: 15px; border-radius: 5px; font-family: 'Consolas', monospace; margin-top: 15px;">
+            # Use Azure Portal > Privileged Identity Management > Azure Resources<br>
+            # Or use Azure AD PowerShell module for bulk operations
+        </div>
+
+        <!-- SUCCESS METRICS -->
+        <h2>📈 Success Metrics</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Current</th>
+                    <th>30 Days</th>
+                    <th>90 Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Owner Assignments</td>
+                    <td>315</td>
+                    <td>&lt;200</td>
+                    <td>&lt;100</td>
+                </tr>
+                <tr>
+                    <td>Contributor Assignments</td>
+                    <td>438</td>
+                    <td>&lt;350</td>
+                    <td>&lt;250</td>
+                </tr>
+                <tr>
+                    <td>Privileged via PIM</td>
+                    <td>0%</td>
+                    <td>50%</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>Direct User Assignments</td>
+                    <td>275 (4%)</td>
+                    <td>&lt;150 (2%)</td>
+                    <td>&lt;100 (1.5%)</td>
+                </tr>
+                <tr>
+                    <td>Group-Based Assignments</td>
+                    <td>1,652 (26%)</td>
+                    <td>2,000 (35%)</td>
+                    <td>2,500 (40%+)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- REPORTING -->
+        <h2>📊 Ongoing Reporting</h2>
+
+        <h3>Weekly RBAC Review</h3>
+        <ul>
+            <li>New privileged role assignments (track via Azure AD logs)</li>
+            <li>PIM activation report (who elevated when)</li>
+            <li>Orphaned assignments (principals no longer in directory)</li>
+            <li>Progress on Owner reduction initiative</li>
+        </ul>
+
+        <h3>Monthly Access Review</h3>
+        <ul>
+            <li>Formal access review of all Owner assignments</li>
+            <li>Service Principal credential expiration check</li>
+            <li>Foreign Group access validation</li>
+            <li>Subscription-level assignment audit</li>
+        </ul>
+
+        <!-- FOOTER -->
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+        
+        <div style="text-align: center; color: #666; padding: 20px;">
+            <p><strong>Identity Team RBAC Review</strong><br>
+            Azure Security Assessment - October 16, 2025</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                Primary Data Source: <code>role_assignments.csv</code> (6,269 assignments)<br>
+                For questions, contact the Identity & Access Management Team
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
