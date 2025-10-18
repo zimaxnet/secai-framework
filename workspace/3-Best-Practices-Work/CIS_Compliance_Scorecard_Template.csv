@@ -1,0 +1,42 @@
+Control ID,Control Name,Level,Section,Automated,Status,Total Resources,Compliant,Non-Compliant,Compliance %,Evidence File,Notes
+3.1,Ensure 'Secure transfer required' is Enabled,1,Storage Accounts,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check supportsHttpsTrafficOnly property
+3.2,Ensure default network access rule is set to deny,1,Storage Accounts,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check networkAcls.defaultAction property
+3.3,Ensure Storage logging is enabled for Queue service,2,Storage Accounts,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Requires diagnostic settings check
+3.4,Ensure Storage logging is enabled for Blob service,2,Storage Accounts,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Requires diagnostic settings check
+3.5,Ensure Storage logging is enabled for Table service,2,Storage Accounts,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Requires diagnostic settings check
+3.6,Ensure storage account access keys are periodically regenerated,1,Storage Accounts,No,MANUAL,,,,,{sub-id}_storage.json,Manual process review required
+3.7,Ensure soft delete is enabled for Azure Storage,1,Storage Accounts,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check properties.deleteRetentionPolicy
+3.8,Ensure storage encryption is enabled for all storage accounts,1,Storage Accounts,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check properties.encryption
+4.1,Ensure that auditing is enabled for SQL servers,1,Database Services,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_sql_servers.json,Check server auditing settings
+4.2,Ensure that TDE is enabled for SQL databases,1,Database Services,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_sql_databases.json,Check transparentDataEncryption status
+4.3,Ensure that Azure AD admin is configured for SQL servers,1,Database Services,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_sql_servers.json,Check administrators property
+4.4,Ensure SQL server firewall rules don't allow 0.0.0.0/0,1,Database Services,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_sql_servers.json,Check firewallRules for AllowAllWindowsAzureIps
+4.5,Ensure Advanced Threat Protection is enabled,2,Database Services,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_sql_servers.json,Check securityAlertPolicies
+5.1.1,Ensure Activity Log retention is at least 365 days,1,Logging and Monitoring,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_diagnostic_settings.json,Check retentionPolicy.days >= 365
+5.1.2,Ensure diagnostic settings capture all activity categories,1,Logging and Monitoring,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_diagnostic_settings.json,Check enabled log categories
+5.2.1,Ensure storage account logging is enabled for read requests,2,Logging and Monitoring,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check diagnostic settings
+5.2.2,Ensure storage account logging is enabled for write requests,2,Logging and Monitoring,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check diagnostic settings
+5.2.3,Ensure storage account logging is enabled for delete requests,2,Logging and Monitoring,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_storage.json,Check diagnostic settings
+6.1,Ensure that NSGs are applied to all subnets,1,Networking,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_vnets.json,Check subnets[].networkSecurityGroup
+6.2,Ensure NSG flow logs are enabled and sent to Log Analytics,2,Networking,No,MANUAL,,,,,Network Watcher,Manual verification in Network Watcher
+6.3,Ensure no SQL Databases allow ingress from 0.0.0.0/0,1,Networking,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_sql_servers.json,Check firewall rules
+6.4,Ensure no Network Security Groups allow ingress from 0.0.0.0/0 to port 22,1,Networking,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_nsgs.json,Check security rules for SSH
+6.5,Ensure no Network Security Groups allow ingress from 0.0.0.0/0 to port 3389,1,Networking,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_nsgs.json,Check security rules for RDP
+6.6,Ensure Network Watcher is enabled,1,Networking,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check for Microsoft.Network/networkWatchers
+7.1,Ensure Virtual Machines are utilizing Managed Disks,1,Virtual Machines,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check VM disk configuration
+7.2,Ensure that OS and Data disks are encrypted,1,Virtual Machines,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check disk encryption settings
+7.3,Ensure that Unattached disks are encrypted,1,Virtual Machines,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check unattached disk encryption
+7.4,Ensure that endpoint protection is installed on VMs,2,Virtual Machines,Partial,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check VM extensions
+8.1,Ensure that expiration date is set for all Keys in Key Vault,1,Key Vault,No,MANUAL,,,,,{sub-id}_keyvaults.json,Manual check of individual keys
+8.2,Ensure that expiration date is set for all Secrets in Key Vault,1,Key Vault,No,MANUAL,,,,,{sub-id}_keyvaults.json,Manual check of individual secrets
+8.3,Ensure that expiration date is set for all Certificates in Key Vault,2,Key Vault,No,MANUAL,,,,,{sub-id}_keyvaults.json,Manual check of individual certificates
+8.4,Ensure that Soft Delete is Enabled for all Key Vaults,1,Key Vault,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_keyvaults.json,Check properties.enableSoftDelete
+8.5,Ensure that Purge Protection is Enabled for all Key Vaults,1,Key Vault,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_keyvaults.json,Check properties.enablePurgeProtection
+8.6,Ensure Key Vault is recoverable,1,Key Vault,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_keyvaults.json,Both soft delete and purge protection
+8.7,Ensure Key Vault logging is enabled,2,Key Vault,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_diagnostic_settings.json,Check diagnostic settings for Key Vaults
+9.1,Ensure App Service authentication is set up,1,App Service,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check App Service auth configuration
+9.2,Ensure HTTPS only is enabled for App Services,1,App Service,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check httpsOnly property
+9.3,Ensure TLS version is set to 1.2 for App Services,1,App Service,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check minTlsVersion property
+9.4,Ensure client certificates are enabled for App Services,2,App Service,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check clientCertEnabled property
+9.5,Ensure managed identity is enabled for App Services,2,App Service,Yes,,[CALCULATED],[CALCULATED],[CALCULATED],[CALCULATED],{sub-id}_resources.json,Check identity property
+

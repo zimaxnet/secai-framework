@@ -44,6 +44,3 @@ node_modules/
 .env.local
 .env.*.local
 
-# Workspace - Internal scratchpad (not for Git or GitHub Pages)
-workspace/
-
