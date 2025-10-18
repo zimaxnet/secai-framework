@@ -1,10 +1,10 @@
 # SecAI Framework
-# The Security Framework for AI-Accelerated Development
+# Enterprise Azure Security Assessment Framework
 # GitHub Pages configuration for Jekyll
 
 # Site settings
 title: "SecAI Framework"
-description: "The Security Framework for AI-Accelerated Development: Enterprise-grade security for Cursor IDE with Azure AI Foundry integration"
+description: "Enterprise Azure Security Assessment Framework - Three-dimensional methodology for comprehensive Azure security evaluation"
 baseurl: "" # Leave empty for root-level GitHub Pages
 url: "https://zimaxnet.github.io" # GitHub Pages URL
 
@@ -92,6 +92,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - ../workspace/
+  - ../implementation/3-Data/
 
 # Plugins
 plugins:

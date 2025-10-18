@@ -6,10 +6,10 @@ has_children: true
 permalink: /getting-started/
 ---
 
-# Getting Started with Secure Cursor Administration
+# Getting Started with Azure Security Assessment
 {: .no_toc }
 
-This section guides you through setting up Cursor IDE with Azure AI Foundry integration for enterprise development teams.
+Execute comprehensive Azure security assessments using VSCode and PowerShell/Python scripts.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -22,187 +22,255 @@ This section guides you through setting up Cursor IDE with Azure AI Foundry inte
 
 ## Overview
 
-Setting up Cursor IDE for enterprise use with Azure AI Foundry integration involves several key steps:
+The SecAI Framework provides a complete three-dimensional assessment methodology for Azure environments:
 
-1. **Prerequisites** - Ensure you have the necessary Azure resources and permissions
-2. **Cursor Installation** - Install and configure Cursor Enterprise with Privacy Mode
-3. **Azure AI Foundry Setup** - Deploy Azure OpenAI resources and configure endpoints
-4. **Integration Configuration** - Connect Cursor to your Azure AI Foundry endpoint
-5. **Security Validation** - Verify data stays within your tenant and audit logs are flowing
+1. **Dimension 1: Configuration Assessment** - Automated data collection via PowerShell/Python
+2. **Dimension 2: Process Assessment** - Structured interviews with operational teams
+3. **Dimension 3: Best Practices Assessment** - Multi-framework compliance validation
+
+**Primary execution method:** VSCode + PowerShell + Python scripts  
+**Optional enhancement:** Cursor IDE + Azure AI Foundry (when customer policy allows)
 
 ## Quick Start Checklist
 
-Before you begin, ensure you have:
+Before you begin:
 
-- [ ] Azure subscription with Owner or Contributor access
-- [ ] Azure Entra ID (Azure AD) tenant with administrative access
-- [ ] Cursor Enterprise license (or evaluation license)
-- [ ] Access to deploy Azure OpenAI services
-- [ ] Network connectivity to Azure (or ability to configure private endpoints)
+- [ ] Azure subscription access (Reader role minimum, Contributor recommended)
+- [ ] PowerShell Core (pwsh) installed
+- [ ] Python 3.8+ with pandas, openpyxl libraries
+- [ ] Azure CLI installed and authenticated
+- [ ] VSCode (or any code editor with terminal)
+- [ ] 10GB disk space for evidence collection
+
+**Optional Enhancement:**
+- [ ] Cursor IDE Enterprise license
+- [ ] Azure AI Foundry endpoint deployment
+- [ ] Private endpoint configuration for AI chat
 
 ## Time Requirements
 
-| Phase | Estimated Time |
-|-------|---------------|
-| Prerequisites setup | 30-60 minutes |
-| Cursor installation | 15 minutes |
-| Azure AI Foundry deployment | 30-45 minutes |
-| Integration configuration | 30 minutes |
-| Security validation & testing | 1-2 hours |
-| **Total** | **3-4.5 hours** |
+| Phase | Estimated Time | Method |
+|-------|---------------|---------|
+| Prerequisites setup | 30-60 minutes | Manual |
+| Dimension 1 collection | 3-4 hours | Automated scripts |
+| Data transformation | 30 minutes | Python scripts |
+| Dimension 3 validation | 5-10 minutes | PowerShell modules |
+| Dimension 2 interviews | 8-16 hours | Human interviews |
+| Report generation | 2-4 hours | Semi-automated |
+| **Total** | **15-25 hours** | **Spread over 2-3 weeks** |
 
 {: .note }
-The times above assume you have appropriate permissions and approvals. Enterprise environments may require additional time for change management and security reviews.
+Most time is automated script execution. Human effort is primarily in Dimension 2 interviews and report review.
 
 ---
 
-## Architecture Overview
+## Execution Overview
 
-```mermaid
-graph TD
-    A[Developer Workstation] -->|TLS 1.3| B[Cursor IDE]
-    B -->|HTTPS + API Key| C[Azure API Management]
-    C -->|Private Endpoint| D[Azure OpenAI Service]
-    D -->|VNet Integration| E[Azure AI Foundry]
-    
-    E -->|Audit Logs| F[Azure Monitor]
-    E -->|Diagnostic Logs| G[Log Analytics]
-    F --> H[Azure Sentinel]
-    G --> H
-    
-    I[Azure Entra ID] -->|SSO| A
-    I -->|RBAC| D
-    I -->|Conditional Access| B
-    
-    style E fill:#0066cc,stroke:#003d7a,color:#fff
-    style B fill:#7c3aed,stroke:#5b21b6,color:#fff
-    style I fill:#00a6ed,stroke:#0086bd,color:#fff
+### Primary Method: VSCode + Scripts
+
+```bash
+# 1. Authenticate to Azure
+az login
+az account set --subscription "your-subscription-id"
+
+# 2. Run Dimension 1 collection scripts (3-4 hours)
+cd implementation/2-Scripts/Collection
+pwsh ./00_login.ps1
+pwsh ./01_scope_discovery.ps1
+pwsh ./02_inventory.ps1
+pwsh ./03_policies_and_defender.ps1
+pwsh ./04_identity_and_privileged_NO_AD_BYPASS_SSL.ps1
+pwsh ./05_network_security.ps1
+pwsh ./06_data_protection.ps1
+pwsh ./07_logging_threat_detection.ps1
+pwsh ./08_backup_recovery.ps1
+pwsh ./09_posture_vulnerability.ps1
+# Optional: Count evidence files
+python ./10_evidence_counter.py
+
+# 3. Run transformation scripts
+cd ../Transformation
+python 11_transform_security.py
+python 12_transform_inventory.py
+python 13_transform_rbac.py
+python 14_transform_network.py
+python 15_transform_data_protection.py
+python 16_transform_logging.py
+python 17_transform_policies.py
+
+# 4. Run Dimension 3 validation (minutes)
+cd ../../workspace/3-Best-Practices-Work
+pwsh ./Validate-All-Frameworks.ps1 -DataPath "../../implementation/2-Scripts/out"
+
+# 5. Review compliance scores and evidence
+# 6. Conduct Dimension 2 interviews
+# 7. Generate final reports
 ```
 
-### Data Flow
+### Enhanced Method: Cursor + Azure AI Foundry (Optional)
 
-1. **Developer Authentication** - SSO via Azure Entra ID to workstation and Cursor
-2. **AI Request** - Cursor sends code completion request to Azure API Management
-3. **Request Validation** - API Management validates API key and applies policies
-4. **Model Inference** - Azure OpenAI processes request using deployed model
-5. **Response** - Completion returned to Cursor via encrypted channel
-6. **Audit Trail** - All API calls logged to Azure Monitor and Log Analytics
+If your organization allows AI-assisted development with data sovereignty:
 
-{: .security }
-**Critical**: All data remains within your Azure tenant. No data is sent to Cursor's servers or any third-party AI providers.
+- Use Cursor IDE for AI-accelerated script development
+- Azure AI Foundry keeps all chat in your tenant
+- Helpful for analyzing large datasets and generating insights
+- [Setup Guide](/getting-started/cursor-setup) (optional)
 
 ---
 
-## Security Principles
+## Assessment Workflow
 
-### Zero-Trust Architecture
+### Phase 1: Configuration Assessment (Dimension 1)
 
-This setup implements zero-trust principles:
+**Objective:** Collect evidence of deployed resources and security configurations
 
-- **Verify Explicitly** - Every request authenticated via API key or Entra ID
-- **Least Privilege Access** - RBAC limits access to AI resources
-- **Assume Breach** - Network segmentation and private endpoints limit blast radius
+**Steps:**
+1. Authenticate to Azure CLI
+2. Execute 10 collection scripts across 12 security domains
+3. Transform JSON to CSV for analysis
+4. Review evidence files
 
-### Defense in Depth
+**Output:** 800+ JSON evidence files, CSV analysis files
 
-Multiple security layers:
+**Time:** 3-4 hours automated execution
 
-| Layer | Control | Implementation |
-|-------|---------|---------------|
-| **Identity** | MFA + Conditional Access | Azure Entra ID |
-| **Network** | Private Endpoints | Azure VNet |
-| **Application** | API Key Rotation | Azure Key Vault |
-| **Data** | Encryption at Rest/Transit | TLS 1.3 + Azure Storage Encryption |
-| **Monitoring** | Audit Logging | Azure Monitor + Sentinel |
+[View Collection Scripts](https://github.com/zimaxnet/secai-framework/tree/main/implementation/2-Scripts/Collection)
+
+### Phase 2: Best Practices Assessment (Dimension 3)
+
+**Objective:** Validate alignment with industry frameworks
+
+**Steps:**
+1. Run multi-framework validation script
+2. Review compliance scores (MCSB, CIS, NIST, PCI-DSS, CCM)
+3. Identify top gaps
+4. Prioritize remediation
+
+**Output:** Compliance scores, control pass/fail details, gap reports
+
+**Time:** 5-10 minutes automated validation
+
+[View Validation Modules](https://github.com/zimaxnet/secai-framework/tree/main/workspace/3-Best-Practices-Work)
+
+### Phase 3: Process Assessment (Dimension 2)
+
+**Objective:** Evaluate operational maturity
+
+**Steps:**
+1. Use Dimension 3 findings to focus interviews
+2. Conduct structured interviews with teams
+3. Score process maturity (5-level model)
+4. Document gaps
+
+**Output:** Process maturity scores, gap analysis
+
+**Time:** 8-16 hours interviews
+
+[View Interview Templates](https://github.com/zimaxnet/secai-framework/tree/main/workspace/2-Process-Assessment-Work)
+
+### Phase 4: Reporting
+
+**Objective:** Generate executive summary and remediation roadmap
+
+**Steps:**
+1. Consolidate findings from all three dimensions
+2. Generate executive summary
+3. Create prioritized remediation roadmap
+4. Present findings to stakeholders
+
+**Output:** Executive summary, remediation roadmap, detailed reports
+
+**Time:** 2-4 hours
 
 ---
 
 ## Prerequisites Deep Dive
 
-### Azure Resources Required
+### Software Requirements
 
-```yaml
-Resource Group:
-  - Name: rg-cursor-ai-research
-  - Location: East US 2 (or your preferred region)
-  - Tags:
-      Environment: Production
-      Project: Cursor-Security-Research
-      Owner: Security-Team
+**Required:**
+- **PowerShell Core (pwsh)** - Version 7.0 or higher
+  - Windows: `winget install Microsoft.PowerShell`
+  - macOS: `brew install powershell`
+  - Linux: [Install instructions](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)
 
-Azure OpenAI Service:
-  - Name: aoai-cursor-prod
-  - SKU: S0 (Standard)
-  - Models:
-      - gpt-4-turbo (recommended)
-      - gpt-4o (optional, for testing)
-  - Network: Private endpoint enabled
-  - RBAC: Cognitive Services User role assigned
+- **Python 3.8+** - With pip package manager
+  - Windows: Download from python.org
+  - macOS: `brew install python3`
+  - Linux: `apt install python3 python3-pip`
 
-Azure Key Vault:
-  - Name: kv-cursor-secrets
-  - SKU: Premium (for HSM-backed keys)
-  - Purpose: Store API keys and certificates
-  - Network: Private endpoint enabled
-  - Soft Delete: Enabled
-  - Purge Protection: Enabled
+- **Azure CLI** - Latest version
+  - All platforms: `https://aka.ms/install-azure-cli`
+  - Verify: `az --version`
 
-Log Analytics Workspace:
-  - Name: law-cursor-audit
-  - Retention: 730 days (2 years minimum)
-  - Purpose: Centralized audit logging
+- **Python Libraries:**
+  ```bash
+  pip install pandas openpyxl azure-identity azure-mgmt-resource
+  ```
 
-Azure Monitor:
-  - Diagnostic Settings: Enabled on all resources
-  - Alerts: Configured for unauthorized access attempts
-```
+- **VSCode** - Or any code editor with integrated terminal
+  - Download: `https://code.visualstudio.com/`
 
-### Permission Requirements
+**Optional (for AI-enhanced analysis):**
+- **Cursor IDE** - Enterprise license
+- **Azure AI Foundry** - Deployed endpoint
+- **Azure OpenAI** - GPT-4 or o1 model deployment
 
-Minimum Azure RBAC roles:
+### Azure Permission Requirements
 
-- **Azure OpenAI Service**: Cognitive Services Contributor
-- **Key Vault**: Key Vault Administrator
-- **Resource Group**: Contributor
-- **Subscription**: Reader (for cost monitoring)
+Minimum Azure RBAC roles for assessment:
+
+- **Reader** - Sufficient for read-only assessment (recommended starting point)
+- **Contributor** - Required for remediation activities
+- **Security Reader** - For Microsoft Defender for Cloud data
+- **Log Analytics Reader** - For diagnostic log queries
+
+{: .note }
+For most assessments, **Reader** role is sufficient. Contributor is only needed if you plan to implement remediation.
 
 ### Network Requirements
 
 | Source | Destination | Port | Protocol | Purpose |
 |--------|-------------|------|----------|---------|
-| Developer Workstation | Azure OpenAI | 443 | HTTPS | API requests |
-| Azure OpenAI | Azure Monitor | 443 | HTTPS | Telemetry |
-| Developer Workstation | Azure Entra ID | 443 | HTTPS | Authentication |
+| Assessment Workstation | Azure Management API | 443 | HTTPS | Azure CLI queries |
+| Assessment Workstation | Azure Resource Graph | 443 | HTTPS | Large-scale queries |
+| Assessment Workstation | Azure Entra ID | 443 | HTTPS | Authentication |
 
 {: .tip }
-For maximum security, use private endpoints and Azure Private Link. This keeps all traffic within the Azure backbone network.
+No inbound connectivity required. All queries are outbound from your workstation to Azure public endpoints.
 
 ---
 
 ## Next Steps
 
-Now that you understand the architecture and prerequisites, proceed with:
+Now that you understand the assessment methodology and prerequisites, proceed with:
 
-1. [Prerequisites Setup](prerequisites.md) - Detailed guide for Azure resource deployment
-2. [Cursor IDE Setup](cursor-setup.md) - Installing and configuring Cursor Enterprise
-3. [Azure AI Foundry Integration](azure-ai-foundry-integration.md) - Connecting Cursor to Azure OpenAI
+1. [Prerequisites Setup](prerequisites.md) - Install required software and authenticate
+2. [Execute Dimension 1](/implementation/2-Scripts/Collection) - Run collection scripts
+3. [Execute Dimension 3](/workspace/3-Best-Practices-Work) - Run validation modules
+4. [Optional: Cursor Setup](cursor-setup.md) - AI-enhanced analysis (if allowed)
 
 ---
 
 ## Troubleshooting
 
-Common issues during setup:
+Common issues during assessment execution:
 
 | Issue | Possible Cause | Resolution |
 |-------|---------------|------------|
-| Can't deploy Azure OpenAI | Region unavailable | Try different region (check [availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability)) |
-| API key authentication fails | Key not in Key Vault | Verify secret name and RBAC permissions |
-| Private endpoint not resolving | DNS not configured | Configure Azure Private DNS zone |
-| Cursor can't connect | Firewall blocking | Check network security groups and firewall rules |
+| `az login` fails | Expired credentials | Run `az logout` then `az login` again |
+| PowerShell script errors | Execution policy | Run `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` |
+| Python import errors | Missing libraries | Run `pip install pandas openpyxl azure-identity` |
+| "Access Denied" errors | Insufficient RBAC | Verify you have Reader role on subscription |
+| Scripts time out | Large subscription | Increase timeout in script or run against fewer resources |
+| No data collected | Wrong subscription | Verify with `az account show` |
+
+{: .tip }
+For detailed troubleshooting, see the [Execution Guide](https://github.com/zimaxnet/secai-framework/blob/main/implementation/1-Documentation/EXECUTION_GUIDE.md).
 
 ---
 
-**Last Updated**: October 10, 2025  
-**Research Phase**: Active Development  
-**Status**: <span class="badge badge-research">In Progress</span>
+**Last Updated**: October 18, 2025  
+**Framework Status**: Production Ready  
+**Status**: <span class="badge badge-new">Assessment-First Positioning</span>
 

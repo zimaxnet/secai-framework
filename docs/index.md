@@ -2,81 +2,135 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Enterprise security research for Cursor IDE administration with Azure AI Foundry integration"
+description: "Enterprise Azure Security Assessment Framework - Three-dimensional methodology for comprehensive Azure security evaluation"
 permalink: /
 ---
 
 # SecAI Framework
 {: .fs-9 }
 
-The Security Framework for AI-Accelerated Development
+Enterprise Azure Security Assessment Framework
 {: .fs-6 .fw-300 }
 
-Enterprise-grade security research and practical guidance for securing Cursor IDE, Azure AI Foundry, and AI development workflows.
+Comprehensive three-dimensional security assessment for Azure environments. Execute via VSCode with optional AI-accelerated analysis using Cursor + Azure AI Foundry.
 {: .fs-5 .fw-300 }
 
 [Get Started](/getting-started/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View on GitHub](https://github.com/zimaxnet/secai-framework){: .btn .fs-5 .mb-4 .mb-md-0 }
+[View Implementation](https://github.com/zimaxnet/secai-framework/tree/main/implementation){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
-## 🛠️ Implementation Package Available!
-{: .label .label-green }
+## 🛠️ Complete Implementation Package Available
 
-The **complete technical implementation** is now available in this repository!
+The **production-ready implementation** is in this repository:
 
 **[→ Browse Implementation Folder](https://github.com/zimaxnet/secai-framework/tree/main/implementation){: .btn .btn-purple }**
 
-The `implementation/` folder contains:
-- ✅ **PowerShell Scripts** - Data collection scripts (00-10) for Azure assessments
-- ✅ **Python Tools** - Transformation (11-17) and analysis (18-19) scripts
-- ✅ **Excel Templates** - Assessment workbooks with 12 security domains
-- ✅ **HTML Dashboards** - Team-specific report templates
-- ✅ **Documentation** - 35+ implementation guides and execution procedures
-- ✅ **Three-Dimensional Assessment** - Configuration, Process, and Best Practices methodology
+### What's Included:
 
-Perfect for: Azure security assessments, CSP-to-MCA migrations, Landing Zone validations, and compliance audits.
+**Dimension 1: Configuration Assessment**
+- ✅ 10 PowerShell collection scripts (Azure CLI + Resource Graph)
+- ✅ 7 Python transformation scripts (JSON → CSV)
+- ✅ 2 Python analysis scripts (risk identification, subscription comparison)
+- ✅ Covers 12 security domains across entire Azure estate
+
+**Dimension 2: Process Assessment**  
+- ✅ Interview templates for 8 operational domains
+- ✅ Process maturity scoring framework
+- ✅ Gap analysis and improvement roadmap generators
+
+**Dimension 3: Best Practices Assessment**
+- ✅ 5 PowerShell framework validation modules (MCSB, CIS, NIST, PCI-DSS, CCM)
+- ✅ Master orchestrator for multi-framework validation
+- ✅ 40+ automated compliance checks
+- ✅ CSV reports and executive summaries
+
+**Execution Environment:** VSCode on Windows/macOS/Linux  
+**Optional Enhancement:** Cursor IDE with Azure AI Foundry for AI-assisted analysis
 
 [Implementation README](https://github.com/zimaxnet/secai-framework/blob/main/implementation/README.md){: .btn .btn-outline }
 [Quick Start Guide](https://github.com/zimaxnet/secai-framework/blob/main/implementation/QUICK_START.md){: .btn .btn-outline }
+
+---
+
+## Three-Dimensional Assessment Methodology
+
+The SecAI Framework evaluates Azure environments across three critical dimensions:
+
+### Dimension 1: Configuration Assessment
+**What is deployed and how it's configured**
+- ✅ 100% Automated - PowerShell + Python scripts
+- ✅ 20 collection/transformation/analysis scripts
+- ✅ 12 security domains: Network, Identity, Data, Logging, Backup, and more
+- ✅ 800+ evidence files collected from Azure CLI and Resource Graph
+- ✅ Execution: VSCode terminal (3-4 hours)
+
+[View Configuration Scripts](https://github.com/zimaxnet/secai-framework/tree/main/implementation/2-Scripts)
+
+### Dimension 2: Process Assessment  
+**How operations are managed and governed**
+- 📋 Interview-driven methodology
+- 📋 8 operational domains: Change Management, Incident Response, Access Control, etc.
+- 📋 Process maturity scoring (5-level model)
+- 📋 Execution: Structured interviews + documentation review
+
+[View Interview Templates](https://github.com/zimaxnet/secai-framework/tree/main/workspace/2-Process-Assessment-Work)
+
+### Dimension 3: Best Practices Assessment
+**Alignment with industry frameworks**
+- ✅ Multi-framework validation: MCSB, CIS v8, NIST 800-53, PCI-DSS, CSA CCM
+- ✅ 40+ automated compliance checks
+- ✅ PowerShell modular validation suite
+- ✅ Quantifiable compliance scores and gap reports
+- ✅ Execution: PowerShell script against collected data (minutes)
+
+[View Validation Modules](https://github.com/zimaxnet/secai-framework/tree/main/workspace/3-Best-Practices-Work)
+
+**Recommended Execution Order:** Dimension 1 → Dimension 3 → Dimension 2
+
 ---
 
 ## About the SecAI Framework
 
-The **SecAI Framework** is a comprehensive security framework for AI-accelerated development, focusing on **Cursor IDE** and **Azure AI Foundry**. Created from a security architect's perspective, the framework provides:
+The **SecAI Framework** is a comprehensive Azure security assessment methodology designed for enterprise environments. Created from a security architect's perspective, the framework provides:
 
-- 🔐 **Security Architecture** - Zero-trust models, tenant isolation, data flow controls
-- ☁️ **Azure AI Foundry Integration** - Keeping AI compute and data within Azure tenant
-- 📋 **Security Policies** - Templates, guidelines, and governance frameworks
-- 🔍 **Model Selection** - Evaluating AI models for security, privacy, and compliance
-- 🛠️ **MCP Server Security** - Securing Model Context Protocol integrations
-- 📊 **Real-World Case Studies** - Sanitized examples from production deployments
+- 📊 **Configuration Assessment** - Automated collection of 800+ evidence files across 12 security domains
+- 🔍 **Process Assessment** - Structured interviews evaluating operational maturity
+- ✅ **Best Practices Assessment** - Multi-framework validation (MCSB, CIS, NIST, PCI-DSS, CCM)
+- 🔐 **Security Tools Analysis** - Deep-dive assessment of enterprise security stacks
+- 📋 **Compliance Mapping** - Alignment with industry standards and frameworks
+- 📊 **Real-World Validation** - Tested with confidential customer programs (sanitized for publication)
 
-### Research Objectives
+### Assessment Objectives
 
 {: .note }
-This is an **active research project** documenting findings and best practices for public consumption. Research is conducted by security professionals evaluating enterprise-grade Cursor deployments.
+This is a **production-ready framework** developed through real-world Azure security assessments. Findings and methodologies are shared for public benefit.
 
 **Primary Goals:**
-1. Document secure Cursor administration patterns for enterprise teams
-2. Establish Azure AI Foundry integration best practices
-3. Create reusable security policy templates and SOPs
-4. Compare security models across AI development tools
-5. Publish findings to help the broader security community
+1. Systematic assessment of Azure environments (34+ subscriptions, 5,000+ resources)
+2. Multi-framework compliance validation (MCSB, CIS, NIST, PCI-DSS, CCM)
+3. CSP-to-MCA migration security validation
+4. Azure Landing Zone security baseline verification
+5. Quarterly security posture assessment and improvement
 
 ---
 
-## Why Azure AI Foundry?
+## Optional: AI-Accelerated Assessment with Cursor + Azure AI Foundry
 
-Azure AI Foundry (formerly Azure AI Studio) provides enterprise teams with:
+**Forward-Thinking Enhancement** (may not be available in all customer environments)
 
-✅ **Data Sovereignty** - All AI processing stays within your Azure tenant  
-✅ **Compliance** - SOC 2, ISO 27001, HIPAA, FedRAMP certified infrastructure  
-✅ **Audit & Governance** - Complete audit trails via Azure Monitor and Log Analytics  
-✅ **Network Isolation** - Private endpoints, VNet integration, no public internet exposure  
-✅ **Enterprise Controls** - RBAC, Conditional Access, PIM for just-in-time access  
+For organizations that allow AI-assisted development, the SecAI Framework can be accelerated using **Cursor IDE with Azure AI Foundry integration**:
 
-By integrating Cursor with Azure AI Foundry, enterprises can leverage AI-accelerated development while maintaining strict security and compliance standards.
+✅ **Data Sovereignty** - AI chat stays within your Azure tenant (not Cursor servers)  
+✅ **Secure Analysis** - Use GPT-4, o1, Codex for script development and data analysis  
+✅ **Compliance** - All AI interactions logged via Azure Monitor  
+✅ **Network Isolation** - Private endpoints, no public internet exposure  
+✅ **Audit Trail** - Complete visibility into AI-assisted analysis
+
+**Primary Method:** VSCode + PowerShell/Python scripts (works everywhere)  
+**Enhanced Method:** Cursor + Azure AI Foundry (when security allows)
+
+[Learn More: Secure AI for Security Assessments](/getting-started/cursor-setup)
 
 ---
 
@@ -86,109 +140,116 @@ By integrating Cursor with Azure AI Foundry, enterprises can leverage AI-acceler
   <div class="col">
     <h3>🚀 Getting Started</h3>
     <ul>
-      <li><a href="/getting-started/">Overview</a></li>
+      <li><a href="/getting-started/">Assessment Quick Start</a></li>
       <li><a href="/getting-started/prerequisites">Prerequisites</a></li>
-      <li><a href="/getting-started/cursor-setup">Cursor Setup</a></li>
-      <li><a href="/getting-started/azure-ai-foundry-integration">Azure AI Foundry Integration</a></li>
+      <li><a href="https://github.com/zimaxnet/secai-framework/tree/main/implementation/2-Scripts">Collection Scripts</a></li>
+      <li><a href="https://github.com/zimaxnet/secai-framework/tree/main/workspace/3-Best-Practices-Work">Validation Modules</a></li>
     </ul>
   </div>
   
   <div class="col">
-    <h3>🔐 Security</h3>
+    <h3>🔐 Assessment Framework</h3>
     <ul>
-      <li><a href="/security-architecture/">Architecture Overview</a></li>
-      <li><a href="/security-architecture/data-flow-diagrams">Data Flow Diagrams</a></li>
-      <li><a href="/security-architecture/tenant-isolation">Tenant Isolation</a></li>
-      <li><a href="/security-architecture/compliance-considerations">Compliance</a></li>
+      <li><a href="/security-architecture/">Three Dimensions</a></li>
+      <li><a href="/security-tools/">Security Tools Stack</a></li>
+      <li><a href="/best-practices/">Best Practices</a></li>
+      <li><a href="/getting-started/cursor-setup">Optional: AI Enhancement</a></li>
     </ul>
   </div>
   
   <div class="col">
-    <h3>📋 Policies</h3>
+    <h3>📋 Implementation</h3>
     <ul>
-      <li><a href="/security-policies/">Policy Templates</a></li>
-      <li><a href="/security-policies/secrets-management">Secrets Management</a></li>
-      <li><a href="/security-policies/team-guidelines">Team Guidelines</a></li>
-      <li><a href="/security-policies/cursorignore-best-practices">.cursorignore Best Practices</a></li>
+      <li><a href="https://github.com/zimaxnet/secai-framework/tree/main/implementation">Implementation Folder</a></li>
+      <li><a href="https://github.com/zimaxnet/secai-framework/blob/main/implementation/QUICK_START.md">Quick Start Guide</a></li>
+      <li><a href="https://github.com/zimaxnet/secai-framework/blob/main/implementation/1-Documentation/EXECUTION_GUIDE.md">Execution Guide</a></li>
+      <li><a href="https://github.com/zimaxnet/secai-framework/blob/main/implementation/1-Documentation/FRAMEWORK_OVERVIEW.md">Framework Overview</a></li>
     </ul>
   </div>
 </div>
 
 ---
 
-## Research Methodology
+## Assessment Methodology
 
-Our research combines:
+Our framework combines automated and manual assessment techniques:
 
-- **Security Architecture Review** - Analyzing Cursor's security model, data flows, and privacy controls
-- **Azure Integration Testing** - Hands-on configuration of Cursor with Azure AI Foundry endpoints
-- **Policy Development** - Creating security policies and SOPs based on enterprise requirements
-- **Compliance Mapping** - Aligning configurations with CIS, NIST, ISO 27001, and CSA frameworks
-- **Real-World Validation** - Testing policies with confidential customer programs (sanitized for publication)
+- **Automated Collection** - PowerShell and Python scripts gather 800+ evidence files from Azure
+- **Multi-Framework Validation** - Validate against MCSB, CIS, NIST, PCI-DSS, CSA CCM
+- **Process Maturity Scoring** - Structured interviews assess operational effectiveness
+- **Compliance Mapping** - Align configurations with industry standards and frameworks
+- **Real-World Validation** - Tested with confidential insurance customer (34+ subscriptions, 5,000+ resources)
 
-### Research Team
+### Framework Team
 
-**Lead Researcher**: Derek Brent Moore - Security Architect  
-**Organization**: [Your Limited Corporation]  
-**Publication**: Findings published to this wiki and shared via social media
+**Lead Architect**: Derek Brent Moore - Security Architect  
+**Organization**: Zimax Network & Security Consulting  
+**Publication**: Findings published for public benefit
 
 ---
 
-## Key Research Areas
+## Key Assessment Areas
 
-### 1. Cursor Enterprise Administration
-- Privacy Mode configuration and enforcement
-- SSO/SCIM integration with Azure Entra ID
-- Telemetry and data retention controls
-- Extension security and allowlisting
-- Audit logging and monitoring
+### 1. Configuration Assessment (Dimension 1)
+- 12 Security Domains: Network, Identity, Data Protection, Logging, Backup, etc.
+- Automated collection via Azure CLI and Resource Graph
+- 800+ JSON evidence files
+- CSV transformation for analysis
+- Resource inventory and configuration exports
 
-### 2. Azure AI Foundry Integration
-- Configuring Cursor with Azure OpenAI endpoints
+### 2. Process Assessment (Dimension 2)
+- Change Management maturity
+- Incident Response procedures
+- Access Provisioning workflows
+- Patch Management cadence
+- Security Monitoring operations
+- Backup & Recovery testing
+- Compliance Management processes
+- Vendor Management oversight
+
+### 3. Best Practices Assessment (Dimension 3)
+- Microsoft Cloud Security Benchmark (MCSB) validation
+- CIS Controls v8 compliance scoring
+- NIST SP 800-53 control mapping
+- PCI-DSS v3.2.1 requirements validation
+- CSA Cloud Controls Matrix (CCM) assessment
+
+### 4. Security Tools Stack Analysis
+- Discovered and analyzed in customer environment:
+- Cloud Security: Wiz CNAPP
+- Endpoint Protection: CrowdStrike Falcon
+- Network Security: Azure Firewall, Palo Alto Prisma Access
+- Log Management: Cribl Stream, Chronicle, Splunk
+- Identity: Okta, Azure Entra ID
+- AppSec: Veracode
+- Testing: Playwright, Selenium
+- Feature Management: LaunchDarkly
+
+### 5. Optional: AI-Enhanced Analysis
+- Cursor IDE with Azure AI Foundry (when customer policy allows)
+- Secure AI chat within Azure tenant for data analysis
+- GPT-4, o1, Codex for script development assistance
 - Private endpoint configuration for network isolation
-- API key vs. Entra ID authentication
-- Model deployment security
-- Cost management and quotas
-
-### 3. Security Policies & Governance
-- Secrets management best practices
-- Team guidelines for safe AI usage
-- Incident response procedures
-- Compliance documentation templates
-- Risk assessment frameworks
-
-### 4. Model Selection & Security
-- Comparing Azure OpenAI models (GPT-4, GPT-4 Turbo, o1, etc.)
-- Security properties of different model families
-- Data residency and sovereignty considerations
-- Performance vs. security trade-offs
-- Model fine-tuning security implications
-
-### 5. MCP Server Security
-- Evaluating GitHub MCP servers for Cursor
-- Azure DevOps MCP integration security
-- Custom MCP server development guidelines
-- Transport security (stdio, SSE, HTTP)
-- Authentication and authorization patterns
+- Complete audit trail via Azure Monitor
 
 ---
 
 ## Latest Updates
 
-<span class="badge badge-new">NEW</span> **Oct 2025** - Wiki launched with initial research structure  
-<span class="badge badge-research">RESEARCH</span> **Oct 2025** - Azure AI Foundry integration guide in progress  
-<span class="badge badge-updated">UPDATED</span> **Oct 2025** - Security architecture diagrams added  
+<span class="badge badge-new">NEW</span> **Oct 2025** - Multi-framework validation suite complete (MCSB, CIS, NIST, PCI-DSS, CCM)  
+<span class="badge badge-updated">UPDATED</span> **Oct 2025** - Dimension 3 production-ready: 40+ automated compliance checks  
+<span class="badge badge-new">NEW</span> **Oct 2025** - Assessment framework realigned: VSCode primary, Cursor optional enhancement  
 
 ---
 
-## Contributing to Research
+## Contributing to Framework Development
 
-This research project welcomes contributions from the security community:
+This assessment framework welcomes contributions from the security community:
 
-- 📝 **Share Your Experiences** - Submit anonymized case studies
-- 🔍 **Review Findings** - Provide feedback on documented practices
-- 🛠️ **Test Configurations** - Validate security configurations in your environment
-- 📊 **Data Analysis** - Contribute security metrics and KPIs
+- 📝 **Share Assessment Findings** - Submit anonymized case studies and results
+- 🔍 **Review Methodology** - Provide feedback on assessment approaches
+- 🛠️ **Extend Framework** - Contribute new validation modules or controls
+- 📊 **Data Analysis** - Share insights from framework execution
 
 See our [contribution guidelines](/about/contributing) for more information.
 
@@ -197,7 +258,7 @@ See our [contribution guidelines](/about/contributing) for more information.
 ## Disclaimer
 
 {: .warning }
-This research is provided "as-is" for educational and informational purposes. Always consult with your organization's security team before implementing any configurations. The research team is not responsible for any security incidents resulting from the use of this information.
+This assessment framework is provided "as-is" for educational and informational purposes. Always obtain proper authorization before assessing Azure environments. Consult with your organization's security team before implementing recommendations. The framework team is not responsible for any issues resulting from the use of this framework.
 
 ---
 

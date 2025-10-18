@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Security Tools & Vendors
-nav_order: 10
+title: Security Tools Stack
+nav_order: 4
 has_children: true
 permalink: /security-tools/
 ---
 
-# Enterprise Security Tools & Vendors
+# Enterprise Security Tools Stack
 {: .no_toc }
 
-Comprehensive analysis of security tools and SaaS vendors used in enterprise Cursor deployments.
+Analysis of security tools discovered and assessed in enterprise Azure environments.
 {: .fs-6 .fw-300 }
 
 {: .note }
-This section documents the security tooling ecosystem used by a confidential insurance services customer. All vendor information is publicly available and properly attributed.
+This section documents the security tooling ecosystem assessed during real-world SecAI Framework execution with a confidential insurance services customer.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -25,7 +25,15 @@ This section documents the security tooling ecosystem used by a confidential ins
 
 ## Overview
 
-Modern enterprise security requires a defense-in-depth approach with multiple specialized tools working together. This section documents the security stack used in production Cursor deployments, focusing on how each tool contributes to overall security posture.
+Modern enterprise security requires a defense-in-depth approach with multiple specialized tools. During our Azure security assessment, we discovered and analyzed a comprehensive security stack deployed across 34+ subscriptions.
+
+**SecAI Framework assesses these tools as part of Dimension 1 (Configuration Assessment):**
+- How are they configured?
+- Are they deployed consistently across environments?
+- What is the logging and monitoring coverage?
+- How do they integrate with Azure-native controls?
+
+This section provides detailed analysis of each tool category and specific vendors.
 
 ### Security Stack Architecture
 
