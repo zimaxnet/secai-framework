@@ -182,8 +182,9 @@ Our framework combines automated and manual assessment techniques:
 
 ### Framework Team
 
-**Lead Architect**: Derek Brent Moore - Security Architect  
-**Organization**: Zimax Network & Security Consulting  
+**Lead Architect**: Derek Brent Moore, Security Architect  
+**Organization**: Zimax Networks LC  
+**Website**: https://zimax.net  
 **Publication**: Findings published for public benefit
 
 ---
@@ -277,11 +278,11 @@ Under the terms:
 
 ## Contact & Social
 
-- **Research Wiki**: [GitHub Pages URL]
-- **GitHub Repository**: [https://github.com/yourusername/cursor-security-research](https://github.com/yourusername/cursor-security-research)
-- **Twitter/X**: [@yourhandle](#)
-- **LinkedIn**: [Your Profile](#)
-- **Research Blog**: [Your Blog](#)
+- **Framework Documentation**: https://zimaxnet.github.io/secai-framework
+- **GitHub Repository**: https://github.com/zimaxnet/secai-framework
+- **Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet)
+- **LinkedIn**: [Derek Moore](https://linkedin.com/in/derekbmoore)
+- **Email**: derek@zimax.net
 
 ---
 

@@ -1,6 +1,6 @@
 # SecAI Framework
 
-> The Security Framework for AI-Accelerated Development: Enterprise-grade security research for Cursor IDE with Azure AI Foundry integration.
+> Enterprise Azure Security Assessment Framework: Three-dimensional methodology for comprehensive Azure security evaluation with optional AI-accelerated analysis.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub Pages](https://img.shields.io/badge/Docs-GitHub%20Pages-blue)](https://zimaxnet.github.io/secai-framework/)
@@ -9,30 +9,32 @@
 
 ## 📋 Overview
 
-The **SecAI Framework** provides comprehensive security research for administering **Cursor IDE** and AI-accelerated development in enterprise teams from a **security architect's perspective**. The framework focuses on Azure AI Foundry integration to keep all AI processing within your Azure tenant while providing reusable patterns for securing any AI development platform.
+The **SecAI Framework** is a production-ready Azure security assessment methodology that evaluates environments across three critical dimensions:
+
+1. **Configuration Assessment** - Automated collection of 800+ evidence files across 12 security domains
+2. **Process Assessment** - Structured interviews evaluating operational maturity
+3. **Best Practices Assessment** - Multi-framework validation (MCSB, CIS v8, NIST 800-53, PCI-DSS, CSA CCM)
 
 **🌐 View the full framework**: [https://zimaxnet.github.io/secai-framework/](https://zimaxnet.github.io/secai-framework/)
 
-### Research Focus Areas
+### Assessment Capabilities
 
-- 🔐 **Security Architecture** - Zero-trust models, tenant isolation, data flow controls
-- ☁️ **Azure AI Foundry Integration** - Keeping AI compute and data within Azure tenant
-- 📋 **Security Policies** - Templates, SOPs, and governance frameworks
-- 🔍 **Model Selection** - Evaluating AI models for security, privacy, and compliance
-- 🛠️ **MCP Server Security** - Securing Model Context Protocol integrations
-- 🔧 **Security Tools** - Deep analysis of enterprise security stack (Wiz, CrowdStrike, Cribl, etc.)
-- 📊 **Real-World Case Studies** - Sanitized examples from production deployments
+- 📊 **Configuration Assessment** - 20 automated PowerShell/Python scripts, 12 security domains
+- 🎤 **Process Assessment** - 8 operational domains, maturity scoring (5-level model)
+- ✅ **Best Practices Assessment** - 40+ automated compliance checks across 5 frameworks
+- 🔧 **Security Tools Analysis** - Comprehensive evaluation of enterprise security stacks
+- 📈 **Real-World Validation** - Tested with 34+ subscriptions, 5,000+ resources
 
-### Why This Research Matters
+### Why Use This Framework
 
-Enterprises adopting Cursor IDE need practical guidance on:
-- Securing AI-accelerated development workflows
-- Maintaining data sovereignty and compliance
-- Integrating with existing security tools
-- Implementing zero-trust architecture
-- Managing costs while maintaining security
+Organizations conducting Azure security assessments need:
+- Systematic, repeatable assessment methodology
+- Multi-framework compliance validation
+- Automated evidence collection
+- Process maturity evaluation
+- Actionable remediation roadmaps
 
-This research provides **battle-tested patterns** from real-world deployments.
+This framework provides **production-ready tools** developed from real-world enterprise assessments.
 
 ## 📚 Documentation
 
@@ -70,24 +72,24 @@ This repository also contains original template documentation in the `/archive` 
 
 ## 🚀 Quick Start
 
-### For Readers
+### For Assessment Teams
 
-1. **Visit the framework site**: [https://yourusername.github.io/secai-framework/](https://yourusername.github.io/secai-framework/)
-2. **Start with**: [Getting Started Guide](https://yourusername.github.io/secai-framework/getting-started/)
-3. **Explore**: Security architecture and policy templates
-4. **Implement**: Follow step-by-step guides
+1. **Visit the framework site**: [https://zimaxnet.github.io/secai-framework/](https://zimaxnet.github.io/secai-framework/)
+2. **Start with**: [Getting Started Guide](https://zimaxnet.github.io/secai-framework/getting-started/)
+3. **Execute**: Dimension 1 collection scripts, Dimension 3 validation modules
+4. **Review**: [Secure Enterprise Execution Guide](workspace/SECURE_ENTERPRISE_EXECUTION_GUIDE.md)
 
 ### For Contributors
 
 We welcome contributions from the security community!
 
 1. Fork this repository
-2. Create a feature branch (`git checkout -b feature/amazing-contribution`)
+2. Create a feature branch (`git checkout -b feature/new-validation-module`)
 3. Make your changes
 4. Test locally with Jekyll: `cd docs && bundle exec jekyll serve`
 5. Submit a pull request
 
-See [Contributing Guidelines](https://yourusername.github.io/cursor-security-research/about/) for details.
+See [Contributing Guidelines](https://zimaxnet.github.io/secai-framework/about/) for details.
 
 ## 🔐 Research Methodology
 
@@ -137,12 +139,13 @@ This kind of **real-world decision analysis** is rare in public documentation.
 4. **Share Real-World Experience** - Lessons learned from production deployments
 5. **Build Community** - Foster collaboration among security professionals
 
-## 👥 Research Team
+## 👥 Framework Team
 
-**Lead Researcher**: Derek Brent Moore - Security Architect  
-**Organization**: [Your Limited Corporation]  
+**Lead Architect**: Derek Brent Moore, Security Architect  
+**Organization**: Zimax Networks LC  
+**Website**: https://zimax.net  
 
-This research is independent and not sponsored by Microsoft, Cursor, or any AI vendor.
+This framework is independent and not sponsored by Microsoft, Azure, or any vendor.
 
 ## 🤝 Contributing
 
@@ -160,8 +163,8 @@ We welcome contributions! See the [full contributing guidelines](https://zimaxne
 - **📖 SecAI Framework Site**: [https://zimaxnet.github.io/secai-framework/](https://zimaxnet.github.io/secai-framework/)
 - **🐛 Report Issues**: [GitHub Issues](https://github.com/zimaxnet/secai-framework/issues)
 - **💬 Discussions**: [GitHub Discussions](https://github.com/zimaxnet/secai-framework/discussions)
-- **🐦 Twitter/X**: [@yourhandle](#) - **#SecAI**
-- **💼 LinkedIn**: [Your Profile](#)
+- **🐦 Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet) - **#SecAI**
+- **💼 LinkedIn**: [Derek Moore](https://linkedin.com/in/derekbmoore)
 
 ## 📄 License
 
@@ -192,9 +195,9 @@ If you find this research helpful, please star the repository to show your suppo
 
 ## 📮 Contact
 
-For questions about this research:
-- **Email**: research@yourcompany.com
-- **Security Issues**: security@yourcompany.com (PGP key available)
+For questions about this framework:
+- **Email**: derek@zimax.net
+- **GitHub Issues**: [Report issues or ask questions](https://github.com/zimaxnet/secai-framework/issues)
 
 ---
 

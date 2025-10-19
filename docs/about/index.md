@@ -6,10 +6,10 @@ has_children: true
 permalink: /about/
 ---
 
-# About This Research
+# About the SecAI Framework
 {: .no_toc }
 
-Background, methodology, and team behind the Cursor Security Research Wiki.
+Background, methodology, and team behind the SecAI Framework.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -20,43 +20,42 @@ Background, methodology, and team behind the Cursor Security Research Wiki.
 
 ---
 
-## Research Overview
+## Framework Overview
 
 ### Mission Statement
 
-To provide comprehensive, practical security research for enterprise teams adopting Cursor IDE with Azure AI Foundry, enabling secure AI-accelerated development without compromising data sovereignty or compliance.
+To provide a comprehensive, production-ready Azure security assessment framework that enables systematic evaluation of Azure environments across configuration, process, and best practices dimensions.
 
-### Research Goals
+### Framework Goals
 
-1. **Document Security Architecture** - Create detailed documentation of secure Cursor deployment patterns
-2. **Validate Azure Integration** - Test and document Azure AI Foundry integration approaches
-3. **Establish Best Practices** - Develop reusable security policies and SOPs
-4. **Share Knowledge** - Publish findings to help the broader security community
+1. **Systematic Assessment** - Provide automated scripts for comprehensive Azure security assessment
+2. **Multi-Framework Validation** - Validate against MCSB, CIS v8, NIST 800-53, PCI-DSS, CSA CCM
+3. **Process Maturity** - Evaluate operational effectiveness through structured interviews
+4. **Share Knowledge** - Publish methodology and tools for public benefit
 5. **Build Community** - Foster collaboration among security professionals
 
 ---
 
-## Research Team
+## Framework Team
 
-### Lead Researcher
+### Lead Architect
 
 **Derek Brent Moore**  
 *Security Architect*
 
-- **Background**: Enterprise security architecture, cloud security, AI/ML security
-- **Certifications**: [Your certifications]
-- **Contact**: [Your email]
-- **LinkedIn**: [Your LinkedIn]
-- **Twitter/X**: [Your handle]
+- **Background**: Enterprise security architecture, cloud security, Azure assessments
+- **Specialization**: Multi-framework compliance validation, security architecture
+- **Email**: derek@zimax.net
+- **LinkedIn**: [linkedin.com/in/derekbmoore](https://linkedin.com/in/derekbmoore)
+- **Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet)
 
-### Contributing Organization
+### Organization
 
-**[Your Limited Corporation]**
+**Zimax Networks LC**
 
-- **Industry**: Security Research & Consulting
-- **Founded**: [Year]
-- **Location**: [Location]
-- **Website**: [Your website]
+- **Industry**: Security Consulting & Cloud Architecture
+- **Website**: [zimax.net](https://zimax.net)
+- **Focus**: Azure security assessments, compliance frameworks, security architecture
 
 ---
 
@@ -215,7 +214,7 @@ We welcome contributions from the security community!
 4. Follow our code of conduct
 
 **Submission Process**:
-1. Fork the [GitHub repository](https://github.com/yourusername/cursor-security-research)
+1. Fork the [GitHub repository](https://github.com/zimaxnet/secai-framework)
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
@@ -270,26 +269,22 @@ This research builds upon work by:
 
 ### Get in Touch
 
-**For Research Questions**:
-- Email: [research@yourcompany.com]
-- GitHub Issues: [Create an issue](https://github.com/yourusername/cursor-security-research/issues)
+**For Framework Questions**:
+- Email: derek@zimax.net
+- GitHub Issues: [Create an issue](https://github.com/zimaxnet/secai-framework/issues)
 
 **For Security Issues**:
-- Email: [security@yourcompany.com]
-- PGP Key: [Link to PGP key]
+- GitHub Security: [Report privately](https://github.com/zimaxnet/secai-framework/security)
+- Email: derek@zimax.net
 
-**For Media Inquiries**:
-- Email: [media@yourcompany.com]
+### Follow the Framework
 
-### Follow Our Research
+Stay updated on new developments:
 
-Stay updated on new findings:
-
-- **GitHub**: [Repository](https://github.com/yourusername/cursor-security-research)
-- **Twitter/X**: [@yourhandle](#)
-- **LinkedIn**: [Your Profile](#)
-- **Blog**: [Your Blog](#)
-- **Newsletter**: [Subscribe](#)
+- **GitHub**: [SecAI Framework Repository](https://github.com/zimaxnet/secai-framework)
+- **Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet)
+- **LinkedIn**: [Derek Moore](https://linkedin.com/in/derekbmoore)
+- **Website**: [zimax.net](https://zimax.net)
 
 ---
 
