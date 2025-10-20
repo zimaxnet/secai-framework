@@ -139,11 +139,11 @@ This kind of **real-world decision analysis** is rare in public documentation.
 4. **Share Real-World Experience** - Lessons learned from production deployments
 5. **Build Community** - Foster collaboration among security professionals
 
-## 👥 Framework Team
+## 👥 Framework Author
 
-**Lead Architect**: Derek Brent Moore, Security Architect  
-**Organization**: Zimax Networks LC  
-**Website**: https://zimax.net  
+**Derek Brent Moore**, Security Architect  
+**Contact**: derek@zimax.net  
+**LinkedIn**: [linkedin.com/in/derekbmoore](https://linkedin.com/in/derekbmoore)
 
 This framework is independent and not sponsored by Microsoft, Azure, or any vendor.
 

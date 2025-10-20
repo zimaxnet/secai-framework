@@ -8,10 +8,9 @@ description: "Enterprise Azure Security Assessment Framework - Three-dimensional
 baseurl: "" # Leave empty for root-level GitHub Pages
 url: "https://zimaxnet.github.io" # GitHub Pages URL
 
-# Author/Organization
+# Author
 author:
   name: "Derek Brent Moore"
-  corporation: "Zimax Networks LC"
   email: "derek@zimax.net"
 
 # Theme configuration
@@ -41,7 +40,7 @@ search:
 heading_anchors: true
 
 # Footer content
-footer_content: "Copyright &copy; 2025 Zimax Networks LC. Distributed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0 License</a>."
+footer_content: "Copyright &copy; 2025 Derek Brent Moore. Distributed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0 License</a>."
 
 # Footer "Edit this page" link
 gh_edit_link: true
@@ -54,8 +53,6 @@ gh_edit_view_mode: "edit"
 aux_links:
   "View on GitHub":
     - "https://github.com/zimaxnet/secai-framework"
-  "Zimax Networks":
-    - "https://zimax.net"
 
 # Navigation structure
 nav_enabled: true

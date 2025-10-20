@@ -180,12 +180,11 @@ Our framework combines automated and manual assessment techniques:
 - **Compliance Mapping** - Align configurations with industry standards and frameworks
 - **Real-World Validation** - Tested with confidential insurance customer (34+ subscriptions, 5,000+ resources)
 
-### Framework Team
+### Framework Author
 
-**Lead Architect**: Derek Brent Moore, Security Architect  
-**Organization**: Zimax Networks LC  
-**Website**: https://zimax.net  
-**Publication**: Findings published for public benefit
+**Derek Brent Moore**, Security Architect  
+**Publication**: Open-source framework for public benefit  
+**Contact**: derek@zimax.net
 
 ---
 
@@ -280,8 +279,9 @@ Under the terms:
 
 - **Framework Documentation**: https://zimaxnet.github.io/secai-framework
 - **GitHub Repository**: https://github.com/zimaxnet/secai-framework
+- **Author**: Derek Brent Moore
+- **LinkedIn**: [linkedin.com/in/derekbmoore](https://linkedin.com/in/derekbmoore)
 - **Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet)
-- **LinkedIn**: [Derek Moore](https://linkedin.com/in/derekbmoore)
 - **Email**: derek@zimax.net
 
 ---

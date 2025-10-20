@@ -36,26 +36,17 @@ To provide a comprehensive, production-ready Azure security assessment framework
 
 ---
 
-## Framework Team
-
-### Lead Architect
+## Framework Author
 
 **Derek Brent Moore**  
 *Security Architect*
 
 - **Background**: Enterprise security architecture, cloud security, Azure assessments
 - **Specialization**: Multi-framework compliance validation, security architecture
+- **Focus**: Azure security assessments, compliance frameworks, automated security validation
 - **Email**: derek@zimax.net
 - **LinkedIn**: [linkedin.com/in/derekbmoore](https://linkedin.com/in/derekbmoore)
 - **Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet)
-
-### Organization
-
-**Zimax Networks LC**
-
-- **Industry**: Security Consulting & Cloud Architecture
-- **Website**: [zimax.net](https://zimax.net)
-- **Focus**: Azure security assessments, compliance frameworks, security architecture
 
 ---
 
@@ -282,9 +273,9 @@ This research builds upon work by:
 Stay updated on new developments:
 
 - **GitHub**: [SecAI Framework Repository](https://github.com/zimaxnet/secai-framework)
+- **Author**: Derek Brent Moore
+- **LinkedIn**: [linkedin.com/in/derekbmoore](https://linkedin.com/in/derekbmoore)
 - **Twitter/X**: [@zimaxnet](https://twitter.com/zimaxnet)
-- **LinkedIn**: [Derek Moore](https://linkedin.com/in/derekbmoore)
-- **Website**: [zimax.net](https://zimax.net)
 
 ---
 
